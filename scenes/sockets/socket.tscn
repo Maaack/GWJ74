@@ -6,13 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3jpv"]
 size = Vector2(80, 80)
 
-[node name="Socket" type="Node2D"]
+[node name="Socket" type="Area2D"]
+monitoring = false
 script = ExtResource("1_x4bi0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x3jpv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_b3hqy")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_x3jpv")
