@@ -7,12 +7,14 @@ signal gate_dropped
 var hovering : bool = false
 var selected : bool = false
 var holding : bool = false
+var socketed : bool = false
 
 @onready var holding_timer := $HoldingTimer
 
 var _nearby_sockets : Array[Socket2D]
 var _colliding_gates : Array[LogicGate2D]
-var _snap_to_relative : Vector2
+var _snap_to_relative_position : Vector2
+var _nearest_socket_relative_position : Vector2
 var _last_clear_global_position : Vector2
 
 func _on_area_2d_mouse_entered():
@@ -36,14 +38,21 @@ func _update_position():
 	global_position = get_global_mouse_position()
 	var nearest_socket := _get_nearest_socket()
 	if nearest_socket is Socket2D:
-		_snap_to_relative = nearest_socket.global_position - global_position
+		_nearest_socket_relative_position = nearest_socket.global_position - global_position
+		_snap_to_relative_position = _nearest_socket_relative_position
 	else:
-		_snap_to_relative = Vector2.ZERO
+		_snap_to_relative_position = Vector2.ZERO
 	if _colliding_gates.size() == 0:
 		_last_clear_global_position = global_position
 	else:
-		_snap_to_relative = _last_clear_global_position - global_position
-	$ShadowSprite2D.position = _snap_to_relative
+		_snap_to_relative_position = _last_clear_global_position - global_position
+	$ShadowSprite2D.position = _snap_to_relative_position
+
+func _hold():
+	selected = true
+	socketed = false
+	holding_timer.start()
+	gate_held.emit()
 
 func _drop():
 	if not holding_timer.is_stopped(): 
@@ -51,20 +60,19 @@ func _drop():
 	if holding: 
 		holding = false
 	selected = false
-	if not _snap_to_relative.is_zero_approx():
-		position += _snap_to_relative
+	if not _snap_to_relative_position.is_zero_approx():
+		position += _snap_to_relative_position
+		if _snap_to_relative_position == _nearest_socket_relative_position:
+			socketed = true
 		$ShadowSprite2D.position = Vector2.ZERO
 	gate_dropped.emit()
 
 func _unhandled_input(event):
-	if event.is_action_pressed(&"select"):
-		if hovering == true:
-			if selected:
-				_drop()
-			else:
-				selected = true
-				holding_timer.start()
-				gate_held.emit()
+	if event.is_action_pressed(&"select") and hovering:
+		if not selected:
+			_hold()
+		else:
+			_drop()
 	elif event.is_action_released(&"select"):
 		holding_timer.stop()
 		if selected and holding:
@@ -72,7 +80,7 @@ func _unhandled_input(event):
 	elif event.is_action_pressed(&"drop"):
 		if selected:
 			_drop()
-	elif selected and event is InputEventMouseMotion:
+	if selected and event is InputEventMouseMotion:
 		_update_position()
 
 func _on_holding_timer_timeout():
