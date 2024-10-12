@@ -16,6 +16,8 @@ var _colliding_gates : Array[LogicGate2D]
 var _snap_to_relative_position : Vector2
 var _nearest_socket_relative_position : Vector2
 var _last_clear_global_position : Vector2
+var _nearest_socket : Socket2D
+var connected_socket : Socket2D
 
 func _on_area_2d_mouse_entered():
 	hovering = true
@@ -36,9 +38,9 @@ func _get_nearest_socket() -> Socket2D:
 
 func _update_position():
 	global_position = get_global_mouse_position()
-	var nearest_socket := _get_nearest_socket()
-	if nearest_socket is Socket2D:
-		_nearest_socket_relative_position = nearest_socket.global_position - global_position
+	_nearest_socket = _get_nearest_socket()
+	if _nearest_socket is Socket2D:
+		_nearest_socket_relative_position = _nearest_socket.global_position - global_position
 		_snap_to_relative_position = _nearest_socket_relative_position
 	else:
 		_snap_to_relative_position = Vector2.ZERO
@@ -50,6 +52,8 @@ func _update_position():
 
 func _hold():
 	selected = true
+	if connected_socket:
+		connected_socket.remove()
 	socketed = false
 	holding_timer.start()
 	gate_held.emit()
@@ -64,6 +68,8 @@ func _drop():
 		position += _snap_to_relative_position
 		if _snap_to_relative_position == _nearest_socket_relative_position:
 			socketed = true
+			connected_socket = _nearest_socket
+			connected_socket.insert(self)
 		$ShadowSprite2D.position = Vector2.ZERO
 	gate_dropped.emit()
 

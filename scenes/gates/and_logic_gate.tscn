@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://4nc6f5wtwhcn"]
+
+[ext_resource type="PackedScene" uid="uid://ysqb6ba7yrp8" path="res://scenes/gates/logic_gate.tscn" id="1_cdtof"]
+[ext_resource type="Script" path="res://scenes/gates/and_logic_gate.gd" id="2_7ermp"]
+
+[node name="AndLogicGate" instance=ExtResource("1_cdtof")]
+script = ExtResource("2_7ermp")

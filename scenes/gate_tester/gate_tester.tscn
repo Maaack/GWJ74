@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkdu767lr5ip1"]
+[gd_scene load_steps=3 format=3 uid="uid://bkdu767lr5ip1"]
 
+[ext_resource type="Script" path="res://scenes/gate_tester/gate_tester.gd" id="1_0tvmm"]
 [ext_resource type="PackedScene" uid="uid://c5dquppa40dh4" path="res://scenes/sockets/socket.tscn" id="1_eqlmp"]
 
 [node name="GateTester" type="Node2D"]
+script = ExtResource("1_0tvmm")
 metadata/_edit_horizontal_guides_ = [-15.0, 15.0, 0.0]
 
 [node name="Socket" parent="." instance=ExtResource("1_eqlmp")]
@@ -330,3 +332,7 @@ grow_vertical = 2
 text = "output 1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="gate_inserted" from="Socket" to="." method="_on_socket_gate_inserted"]
