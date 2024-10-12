@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ysqb6ba7yrp8"]
+
+[ext_resource type="Script" path="res://scenes/gates/logic_gate.gd" id="1_0lbla"]
+[ext_resource type="Texture2D" uid="uid://ct1xbwchxx8l0" path="res://assets/images/logic-gate-and.png" id="2_6rdcb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7ne5"]
+size = Vector2(80, 80)
+
+[node name="LogicGate" type="Node2D"]
+script = ExtResource("1_0lbla")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6rdcb")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_n7ne5")
+
+[node name="HoldingTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="HoldingTimer" to="." method="_on_holding_timer_timeout"]
