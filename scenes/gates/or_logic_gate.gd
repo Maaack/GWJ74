@@ -1,5 +1,5 @@
-class_name OrLogicGate2D
-extends Gate2I1O
+class_name OrLogicGate
+extends HauntableGate2I1O
 
-func get_output() -> int:
+func _get_raw_output() -> int:
 	return input_1 | input_2

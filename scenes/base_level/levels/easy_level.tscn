@@ -13,21 +13,27 @@
 input_wires = [NodePath("Wire"), NodePath("Wire2")]
 output_wires = [NodePath("Wire3")]
 expected_outputs = Array[int]([0, 0, 0, 1])
-output_check_delay = null
 
 [node name="GateTester" parent="." index="1" instance=ExtResource("4_gqu61")]
 position = Vector2(125, -279)
 
 [node name="AndLogicGate" parent="." index="2" instance=ExtResource("4_c4owr")]
+haunted_inputs = Array[int]([])
+haunting_pattern = Array[int]([])
 
 [node name="OrLogicGate" parent="." index="3" instance=ExtResource("5_el4rx")]
 position = Vector2(-181, -177)
+haunted_inputs = Array[int]([0, 1])
 
 [node name="NorLogicGate" parent="." index="4" instance=ExtResource("6_b3fjp")]
 position = Vector2(-400, -91)
+haunted_inputs = Array[int]([])
+haunting_pattern = Array[int]([])
 
 [node name="NandLogicGate" parent="." index="5" instance=ExtResource("7_641fq")]
 position = Vector2(-342, -217)
+haunted_inputs = Array[int]([])
+haunting_pattern = Array[int]([])
 
 [node name="Socket2I1O" parent="." index="6" node_paths=PackedStringArray("input_1_wire", "input_2_wire", "output_1_wire") instance=ExtResource("7_fhlk3")]
 position = Vector2(4, -91)

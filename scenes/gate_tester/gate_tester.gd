@@ -3,13 +3,6 @@ extends Node2D
 
 @export var test_time : float = 0.25
 
-const TEST_SUITE : Array[Vector2i] = [
-	Vector2i.ZERO,
-	Vector2i.DOWN,
-	Vector2i.RIGHT,
-	Vector2i.ONE,
-]
-
 @onready var output_00_label : Label = %Output00Label
 @onready var output_01_label : Label = %Output01Label
 @onready var output_10_label : Label = %Output10Label
@@ -34,12 +27,14 @@ func test_gate(input_1 : int, input_2 : int, gate : Gate2I1O) -> int:
 func test_gate_suite(gate : Gate2I1O):
 	clear_outputs()
 	var iter = 0
-	for test in TEST_SUITE:
+	for test in range(outputs.size()):
 		if iter > outputs.size(): break
 		await get_tree().create_timer(test_time, false).timeout
 		var _output_label : Label = outputs[iter]
-		var _result : int = test_gate(test.x, test.y, gate)
-		print("%d %d is %d" % [test.x, test.y, _result])
+		var test_input_1 : int = int((test & 1) > 0)
+		var test_input_2 : int = int((test & 2) > 0)
+		var _result : int = test_gate(test_input_1, test_input_2, gate)
+		print("%d %d is %d" % [test_input_1, test_input_2, _result])
 		iter += 1
 		_output_label.text = "%d" % int(_result)
 

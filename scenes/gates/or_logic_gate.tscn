@@ -6,6 +6,8 @@
 
 [node name="OrLogicGate" instance=ExtResource("1_bb3pj")]
 script = ExtResource("2_2hrav")
+haunted_inputs = Array[int]([])
+haunting_pattern = Array[int]([])
 
 [node name="ShadowSprite2D" parent="." index="0"]
 texture = ExtResource("3_fjep8")

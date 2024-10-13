@@ -1,4 +1,4 @@
-class_name LogicGate2D
+class_name LogicGate
 extends Node2D
 
 signal gate_held
@@ -12,7 +12,7 @@ var socketed : bool = false
 @onready var holding_timer := $HoldingTimer
 
 var _nearby_sockets : Array[Socket2D]
-var _colliding_gates : Array[LogicGate2D]
+var _colliding_gates : Array[LogicGate]
 var _snap_to_relative_position : Vector2
 var _nearest_socket_relative_position : Vector2
 var _last_clear_global_position : Vector2
@@ -95,11 +95,11 @@ func _on_holding_timer_timeout():
 func _on_area_2d_area_entered(area):
 	if area is Socket2D:
 		_nearby_sockets.append(area)
-	if area.get_parent() is LogicGate2D:
+	if area.get_parent() is LogicGate:
 		_colliding_gates.append(area.get_parent())
 
 func _on_area_2d_area_exited(area):
 	if area is Socket2D and area in _nearby_sockets:
 		_nearby_sockets.erase(area)
-	if area.get_parent() is LogicGate2D and area.get_parent() in _colliding_gates:
+	if area.get_parent() is LogicGate and area.get_parent() in _colliding_gates:
 		_colliding_gates.erase(area.get_parent())
