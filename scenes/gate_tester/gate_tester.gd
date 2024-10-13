@@ -26,9 +26,9 @@ func clear_outputs():
 	for output in outputs:
 		output.text = ""
 
-func test_gate(input_1 : int, input_2 : int, gate : Gate2I1O) -> bool:
-	gate.input_1 = bool(input_1)
-	gate.input_2 = bool(input_2)
+func test_gate(input_1 : int, input_2 : int, gate : Gate2I1O) -> int:
+	gate.input_1 = input_1
+	gate.input_2 = input_2
 	return gate.get_output()
 
 func test_gate_suite(gate : Gate2I1O):
@@ -38,7 +38,7 @@ func test_gate_suite(gate : Gate2I1O):
 		if iter > outputs.size(): break
 		await get_tree().create_timer(test_time, false).timeout
 		var _output_label : Label = outputs[iter]
-		var _result : bool = test_gate(test.x, test.y, gate)
+		var _result : int = test_gate(test.x, test.y, gate)
 		iter += 1
 		_output_label.text = "%d" % int(_result)
 
