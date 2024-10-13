@@ -39,8 +39,9 @@ func test_gate_suite(gate : Gate2I1O):
 		await get_tree().create_timer(test_time, false).timeout
 		var _output_label : Label = outputs[iter]
 		var _result : int = test_gate(test.x, test.y, gate)
+		print("%d %d is %d" % [test.x, test.y, _result])
 		iter += 1
 		_output_label.text = "%d" % int(_result)
 
-func _on_socket_gate_inserted(gate):
+func _on_socket_2i_1o_gate_inserted(gate):
 	test_gate_suite(gate)

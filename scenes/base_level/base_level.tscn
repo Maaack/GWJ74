@@ -4,5 +4,11 @@
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_7im4o")
+output_check_delay = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UpdateTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]

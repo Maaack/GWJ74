@@ -1,28 +1,51 @@
-[gd_scene load_steps=8 format=3 uid="uid://dilnv35t6oxn2"]
+[gd_scene load_steps=9 format=3 uid="uid://dilnv35t6oxn2"]
 
 [ext_resource type="PackedScene" uid="uid://bjlxayc5mxtjo" path="res://scenes/base_level/base_level.tscn" id="1_alxyc"]
-[ext_resource type="PackedScene" uid="uid://c5dquppa40dh4" path="res://scenes/sockets/socket.tscn" id="3_xam0s"]
 [ext_resource type="PackedScene" uid="uid://4nc6f5wtwhcn" path="res://scenes/gates/and_logic_gate.tscn" id="4_c4owr"]
 [ext_resource type="PackedScene" uid="uid://bkdu767lr5ip1" path="res://scenes/gate_tester/gate_tester.tscn" id="4_gqu61"]
 [ext_resource type="PackedScene" uid="uid://dp20aewto6ku6" path="res://scenes/gates/or_logic_gate.tscn" id="5_el4rx"]
 [ext_resource type="PackedScene" uid="uid://cj4xrqn3u2qan" path="res://scenes/gates/nor_logic_gate.tscn" id="6_b3fjp"]
 [ext_resource type="PackedScene" uid="uid://chnbat3fevrv7" path="res://scenes/gates/nand_logic_gate.tscn" id="7_641fq"]
+[ext_resource type="PackedScene" uid="uid://b73alytko4pev" path="res://scenes/sockets/socket_2i_1o.tscn" id="7_fhlk3"]
+[ext_resource type="PackedScene" uid="uid://cvriurvuudiom" path="res://scenes/wires/wire.tscn" id="8_uchpd"]
 
-[node name="EasyLevel" instance=ExtResource("1_alxyc")]
+[node name="EasyLevel" node_paths=PackedStringArray("input_wires", "output_wires") instance=ExtResource("1_alxyc")]
+input_wires = [NodePath("Wire"), NodePath("Wire2")]
+output_wires = [NodePath("Wire3")]
+expected_outputs = Array[int]([0, 0, 0, 1])
+output_check_delay = null
 
-[node name="Socket" parent="." index="1" instance=ExtResource("3_xam0s")]
-position = Vector2(-138, 12)
-
-[node name="GateTester" parent="." index="2" instance=ExtResource("4_gqu61")]
+[node name="GateTester" parent="." index="1" instance=ExtResource("4_gqu61")]
 position = Vector2(125, -279)
 
-[node name="AndLogicGate" parent="." index="3" instance=ExtResource("4_c4owr")]
+[node name="AndLogicGate" parent="." index="2" instance=ExtResource("4_c4owr")]
 
-[node name="OrLogicGate" parent="." index="4" instance=ExtResource("5_el4rx")]
+[node name="OrLogicGate" parent="." index="3" instance=ExtResource("5_el4rx")]
 position = Vector2(-181, -177)
 
-[node name="NorLogicGate" parent="." index="5" instance=ExtResource("6_b3fjp")]
+[node name="NorLogicGate" parent="." index="4" instance=ExtResource("6_b3fjp")]
 position = Vector2(-400, -91)
 
-[node name="NandLogicGate" parent="." index="6" instance=ExtResource("7_641fq")]
+[node name="NandLogicGate" parent="." index="5" instance=ExtResource("7_641fq")]
 position = Vector2(-342, -217)
+
+[node name="Socket2I1O" parent="." index="6" node_paths=PackedStringArray("input_1_wire", "input_2_wire", "output_1_wire") instance=ExtResource("7_fhlk3")]
+position = Vector2(4, -91)
+input_1_wire = NodePath("../Wire")
+input_2_wire = NodePath("../Wire2")
+output_1_wire = NodePath("../Wire3")
+
+[node name="Wire" parent="." index="7" instance=ExtResource("8_uchpd")]
+position = Vector2(-186, -108)
+points = PackedVector2Array(108, 5, 12, 5)
+
+[node name="Wire2" parent="." index="8" instance=ExtResource("8_uchpd")]
+position = Vector2(-186, -80)
+points = PackedVector2Array(108, 5, 12, 5)
+
+[node name="Wire3" parent="." index="9" instance=ExtResource("8_uchpd")]
+position = Vector2(70, -96)
+points = PackedVector2Array(108, 5, 12, 5)
+
+[node name="UpdateTimer" parent="." index="10"]
+wait_time = 0.5

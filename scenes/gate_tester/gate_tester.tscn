@@ -1,25 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkdu767lr5ip1"]
 
 [ext_resource type="Script" path="res://scenes/gate_tester/gate_tester.gd" id="1_0tvmm"]
-[ext_resource type="PackedScene" uid="uid://c5dquppa40dh4" path="res://scenes/sockets/socket.tscn" id="1_eqlmp"]
+[ext_resource type="PackedScene" uid="uid://b73alytko4pev" path="res://scenes/sockets/socket_2i_1o.tscn" id="2_4upxj"]
 
 [node name="GateTester" type="Node2D"]
 script = ExtResource("1_0tvmm")
 metadata/_edit_horizontal_guides_ = [-15.0, 15.0, 0.0]
 
-[node name="Socket" parent="." instance=ExtResource("1_eqlmp")]
-
-[node name="Input1Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(-82, -15, -42, -15)
-width = 5.0
-
-[node name="Input2Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(-82, 15, -42, 15)
-width = 5.0
-
-[node name="Output1Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(82, 0, 42, 0)
-width = 5.0
+[node name="Socket2I1O" parent="." instance=ExtResource("2_4upxj")]
 
 [node name="TestingUI" type="Node2D" parent="."]
 position = Vector2(269, 0)
@@ -335,4 +323,4 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="gate_inserted" from="Socket" to="." method="_on_socket_gate_inserted"]
+[connection signal="gate_inserted" from="Socket2I1O" to="." method="_on_socket_2i_1o_gate_inserted"]

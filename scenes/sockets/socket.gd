@@ -13,3 +13,9 @@ func insert(gate : LogicGate2D):
 func remove():
 	inserted_gate = null
 	gate_removed.emit()
+
+func update():
+	pass
+
+func _on_update_timer_timeout():
+	update()
