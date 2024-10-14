@@ -35,7 +35,6 @@ files = Array[String](["res://scenes/base_level/levels/easy_level.tscn", "res://
 directory = "res://scenes/base_level/levels"
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("7_8u31h")]
-bus = &"Master"
 
 [node name="LoadingScreen" parent="." instance=ExtResource("8_4v231")]
 visible = false
@@ -51,6 +50,7 @@ mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="UIContainer/HBoxContainer"]
 layout_mode = 2
@@ -77,10 +77,6 @@ theme_override_constants/margin_bottom = 64
 [node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/HBoxContainer/SidePanelUI"]
 layout_mode = 2
 theme_override_constants/separation = 16
-
-[node name="TestsContainer" parent="UIContainer/HBoxContainer/SidePanelUI/VBoxContainer" instance=ExtResource("10_wir5e")]
-unique_name_in_owner = true
-layout_mode = 2
 
 [node name="TestingProgressLabel" type="Label" parent="UIContainer/HBoxContainer/SidePanelUI/VBoxContainer"]
 layout_mode = 2
@@ -111,6 +107,10 @@ min_value = 0.5
 max_value = 4.0
 step = 0.025
 value = 1.0
+
+[node name="TestsContainer" parent="UIContainer/HBoxContainer/SidePanelUI/VBoxContainer" instance=ExtResource("10_wir5e")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [connection signal="level_load_started" from="LevelLoader" to="." method="_on_level_loader_level_load_started"]
 [connection signal="level_loaded" from="LevelLoader" to="." method="_on_level_loader_level_loaded"]

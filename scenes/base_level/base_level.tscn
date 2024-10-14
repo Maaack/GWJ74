@@ -6,7 +6,6 @@
 texture_filter = 1
 script = ExtResource("1_7im4o")
 output_check_delay = 0.2
-matches_required = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
