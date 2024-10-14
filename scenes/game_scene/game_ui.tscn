@@ -89,6 +89,8 @@ vertical_alignment = 1
 [node name="TestingProgressBar" type="ProgressBar" parent="UIContainer/HBoxContainer/SidePanelUI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+max_value = 1.0
+step = 0.001
 
 [connection signal="level_load_started" from="LevelLoader" to="." method="_on_level_loader_level_load_started"]
 [connection signal="level_loaded" from="LevelLoader" to="." method="_on_level_loader_level_loaded"]

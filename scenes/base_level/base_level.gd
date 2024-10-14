@@ -2,8 +2,7 @@
 class_name BaseLevel
 extends Node2D
 
-signal level_won
-signal level_lost
+signal output_checked(input: int, output: int, progress: float)
 
 const MATCH_REQUIREMENT_MOD = 2.5
 
@@ -40,17 +39,15 @@ func _update_inputs():
 			input_wire.charge = 0.0
 		_wire_iter += 1
 
-func _check_level_won():
-	if _consecutive_matches >= _consecutive_matches_required:
-		level_won.emit()
-
 func _check_output():
 	var _current_output = _get_current_output()
-	print("%d match %d to " % [input_iter, expected_outputs[input_iter]], _current_output)
-	if _current_output == expected_outputs[input_iter]:
+	var _expected_output : int = expected_outputs[input_iter]
+	var _outputs_match : bool = _current_output == _expected_output
+	if _outputs_match:
 		_consecutive_matches += 1
 	else:
 		_consecutive_matches = 0
+	output_checked.emit(input_iter, _current_output, float(_consecutive_matches) / float(_consecutive_matches_required))
 
 func _get_current_output():
 	var _current_output : int = 0
@@ -65,7 +62,6 @@ func _get_current_output():
 func _delay_check_output():
 	await get_tree().create_timer(output_check_delay).timeout
 	_check_output()
-	_check_level_won()
 
 func update():
 	_update_inputs()

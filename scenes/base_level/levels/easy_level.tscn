@@ -13,7 +13,6 @@
 input_wires = [NodePath("Wire"), NodePath("Wire2")]
 output_wires = [NodePath("Wire3")]
 expected_outputs = Array[int]([0, 0, 0, 1])
-cycle_input_time = 0.5
 
 [node name="GateTester" parent="." index="1" instance=ExtResource("4_gqu61")]
 position = Vector2(125, -279)

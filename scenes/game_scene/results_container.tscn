@@ -5,6 +5,8 @@
 [node name="ResultsContainer" type="HBoxContainer"]
 size_flags_horizontal = 3
 script = ExtResource("1_5imq5")
+good_color = Color(0.34286, 0.832624, 0.377256, 1)
+bad_color = Color(0.92456, 0.317686, 0.316626, 1)
 
 [node name="Input" type="Label" parent="."]
 unique_name_in_owner = true
