@@ -10,22 +10,23 @@ const MATCH_REQUIREMENT_MOD = 2.5
 @export var input_wires : Array[Wire] :
 	set(value):
 		input_wires = value
-		_combinations = pow(input_wires.size(), 2)
-		expected_outputs.resize(_combinations)
-		_consecutive_matches_required = int(_combinations * MATCH_REQUIREMENT_MOD)
+		input_range = pow(input_wires.size(), 2)
+		expected_outputs.resize(input_range)
+		_consecutive_matches_required = int(input_range * MATCH_REQUIREMENT_MOD)
 
 @export var output_wires : Array[Wire]
 @export var expected_outputs : Array[int] = []
 @export var output_check_delay : float = 0.3
+@export var cycle_input_time : float = 0.5
 
-var _combinations : int = 0
+var input_range : int = 0
 var _consecutive_matches_required : int = 0
 var _consecutive_matches : int = 0
 var input_iter : int = -1
 
 func _update_inputs():
 	input_iter += 1
-	if input_iter >= _combinations:
+	if input_iter >= input_range:
 		input_iter = 0
 	var _current_input = int(input_iter)
 	var _wire_iter := 0
@@ -72,3 +73,6 @@ func update():
 
 func _on_update_timer_timeout():
 	update()
+
+func start_updates():
+	$UpdateTimer.start(cycle_input_time)

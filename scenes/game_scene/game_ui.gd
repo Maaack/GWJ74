@@ -14,6 +14,16 @@ func _on_level_lost():
 func _on_level_won():
 	$LevelLoader.advance_and_load_level()
 
+func _boot_tests():
+	%TestsContainer.clear()
+	if current_level is BaseLevel:
+		for input in range(current_level.input_range):
+			await get_tree().create_timer(0.1).timeout
+			var expected_output = current_level.expected_outputs[input]
+			%TestsContainer.add_test(input, expected_output)
+		await get_tree().create_timer(0.5).timeout
+		current_level.start_updates()
+
 func _on_level_loader_level_loaded():
 	current_level = $LevelLoader.current_level
 	await current_level.ready
@@ -21,6 +31,7 @@ func _on_level_loader_level_loaded():
 		current_level.level_won.connect(_on_level_won)
 	if current_level.has_signal("level_lost"):
 		current_level.level_lost.connect(_on_level_lost)
+	_boot_tests()
 	$LoadingScreen.close()
 
 func _on_level_loader_levels_finished():

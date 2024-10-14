@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgpcyoodqahr7"]
+
+[ext_resource type="Script" path="res://scenes/game_scene/results_container.gd" id="1_5imq5"]
+
+[node name="ResultsContainer" type="HBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_5imq5")
+
+[node name="Input" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Divider" type="Label" parent="."]
+layout_mode = 2
+text = ":"
+
+[node name="ExpectedOutput" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Divider2" type="Label" parent="."]
+layout_mode = 2
+text = ":"
+
+[node name="Output" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
