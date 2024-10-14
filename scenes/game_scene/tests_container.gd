@@ -7,10 +7,11 @@ func clear():
 	for child in results_container.get_children():
 		child.queue_free()
 
-func add_test(input : int, expected_output : int, bit_range : int = 2):
+func add_test(input : int, expected_output : int, input_bit_range : int = 2, output_bit_range : int = 1):
 	var result_instance = result_row_scene.instantiate()
 	results_container.add_child(result_instance)
-	result_instance.bit_range = bit_range
+	result_instance.input_bit_range = input_bit_range
+	result_instance.output_bit_range = output_bit_range
 	await get_tree().create_timer(0.1, true).timeout
 	result_instance.input = input
 	await get_tree().create_timer(0.1, true).timeout

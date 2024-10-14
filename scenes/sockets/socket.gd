@@ -16,6 +16,3 @@ func remove():
 
 func update():
 	pass
-
-func _on_update_timer_timeout():
-	update()

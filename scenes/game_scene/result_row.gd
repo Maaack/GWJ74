@@ -16,9 +16,10 @@ var output : int :
 		output = value
 		_update_output()
 
-var bit_range : int
+var input_bit_range : int
+var output_bit_range : int
 
-func _to_base_2_string(integer : int) -> String:
+func _to_base_2_string(integer : int, bit_range) -> String:
 	var base_2_string := ""
 	for iter in range(bit_range):
 		var bit_mask : int = int(pow(2,iter))
@@ -32,18 +33,18 @@ func _to_base_2_string(integer : int) -> String:
 func _update_input():
 	%Input.text = ""
 	await get_tree().create_timer(0.1, true).timeout
-	%Input.text = _to_base_2_string(input)
+	%Input.text = _to_base_2_string(input, input_bit_range)
 
 func _update_expected_output():
 	%ExpectedOutput.text = ""
 	await get_tree().create_timer(0.1, true).timeout
-	%ExpectedOutput.text = _to_base_2_string(expected_output)
+	%ExpectedOutput.text = _to_base_2_string(expected_output, output_bit_range)
 
 func _update_output():
 	%Output.modulate = Color.WHITE
 	%Output.text = ""
 	await get_tree().create_timer(0.1, true).timeout
-	%Output.text = _to_base_2_string(output)
+	%Output.text = _to_base_2_string(output, output_bit_range)
 	if output == expected_output:
 		%Output.modulate = good_color
 	else:

@@ -1,9 +1,21 @@
 class_name Socket2I1O
 extends Socket2D
 
-@export var input_1_wire : Wire
-@export var input_2_wire : Wire
+@export var input_1_wire : Wire :
+	set(value):
+		input_1_wire = value
+		if input_1_wire is Wire:
+			_try_to_connect_signal_to_node(input_1_wire, &"charge_changed", func(_a):update())
+@export var input_2_wire : Wire :
+	set(value):
+		input_2_wire = value
+		if input_2_wire is Wire:
+			_try_to_connect_signal_to_node(input_2_wire, &"charge_changed", func(_a):update())
 @export var output_1_wire : Wire
+
+func _try_to_connect_signal_to_node(node : Node, signal_name : StringName, callable : Callable):
+	if node.has_signal(signal_name) and not node.is_connected(signal_name, callable):
+		node.connect(signal_name, callable)
 
 func update():
 	if not (input_1_wire and input_2_wire and output_1_wire): return

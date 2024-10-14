@@ -26,7 +26,7 @@ func _boot_tests():
 		for input in range(current_level.input_range):
 			await get_tree().create_timer(0.1).timeout
 			var expected_output = current_level.expected_outputs[input]
-			%TestsContainer.add_test(input, expected_output, current_level.input_wires.size())
+			%TestsContainer.add_test(input, expected_output, current_level.input_wires.size(), current_level.output_wires.size())
 		await get_tree().create_timer(0.5).timeout
 		%RunButton.button_pressed = true
 
