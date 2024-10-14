@@ -11,3 +11,8 @@ func update():
 		inserted_gate.input_1 = round(input_1_wire.charge)
 		inserted_gate.input_2 = round(input_2_wire.charge)
 		output_1_wire.charge = float(inserted_gate.get_output())
+
+func remove():
+	super.remove()
+	if output_1_wire:
+		output_1_wire.charge = 0.0

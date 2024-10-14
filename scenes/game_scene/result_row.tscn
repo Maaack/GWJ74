@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgpcyoodqahr7"]
 
-[ext_resource type="Script" path="res://scenes/game_scene/results_container.gd" id="1_5imq5"]
+[ext_resource type="Script" path="res://scenes/game_scene/result_row.gd" id="1_waotv"]
 
-[node name="ResultsContainer" type="HBoxContainer"]
+[node name="ResultRow" type="HBoxContainer"]
 size_flags_horizontal = 3
-script = ExtResource("1_5imq5")
+script = ExtResource("1_waotv")
 good_color = Color(0.34286, 0.832624, 0.377256, 1)
 bad_color = Color(0.92456, 0.317686, 0.316626, 1)
 
