@@ -54,6 +54,7 @@ func _hold():
 	selected = true
 	if connected_socket:
 		connected_socket.remove()
+		connected_socket = null
 	socketed = false
 	holding_timer.start()
 	gate_held.emit()

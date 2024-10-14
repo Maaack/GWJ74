@@ -41,14 +41,18 @@ func _update_expected_output():
 	%ExpectedOutput.text = _to_base_2_string(expected_output, output_bit_range)
 
 func _update_output():
+	%ExpectedOutput.modulate = Color.WHITE
 	%Output.modulate = Color.WHITE
 	%Output.text = ""
 	await get_tree().create_timer(0.1, true).timeout
 	%Output.text = _to_base_2_string(output, output_bit_range)
+	await get_tree().create_timer(0.1, true).timeout
 	if output == expected_output:
 		%Output.modulate = good_color
+		%ExpectedOutput.modulate = good_color
 	else:
 		%Output.modulate = bad_color
+		%ExpectedOutput.modulate = bad_color
 
 func clear_output():
 	%Output.text = ""

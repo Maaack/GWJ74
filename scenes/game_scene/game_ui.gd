@@ -30,9 +30,10 @@ func _boot_tests():
 		await get_tree().create_timer(0.5).timeout
 		%RunButton.button_pressed = true
 
-func _on_level_check_output(input: int, output: int, progress: float):
+func _on_level_check_output(input: int, output: int):
 	%TestsContainer.add_output(input, output)
-	await get_tree().create_timer(0.1).timeout
+
+func _on_level_progress_updated(progress: float):
 	var tween = create_tween()
 	tween.tween_property(%TestingProgressBar, "value", progress, 0.1)
 	await get_tree().create_timer(0.1).timeout
@@ -44,6 +45,7 @@ func _on_level_loader_level_loaded():
 	await current_level.ready
 	_try_connecting_signal_to_node(current_level, &"level_won", _on_level_won)
 	_try_connecting_signal_to_node(current_level, &"output_checked", _on_level_check_output)
+	_try_connecting_signal_to_node(current_level, &"progress_updated", _on_level_progress_updated)
 	_boot_tests()
 	$LoadingScreen.close()
 

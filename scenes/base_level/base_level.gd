@@ -2,7 +2,8 @@
 class_name BaseLevel
 extends Node2D
 
-signal output_checked(input: int, output: int, progress: float)
+signal output_checked(input: int, output: int)
+signal progress_updated(progress: float)
 
 const MATCH_REQUIREMENT_MOD = 2.5
 
@@ -40,6 +41,13 @@ func _update_inputs():
 			input_wire.charge = 0.0
 		_wire_iter += 1
 
+func update_progress():
+	progress_updated.emit(float(_consecutive_matches) / float(_consecutive_matches_required))
+
+func _reset_progress():
+	_consecutive_matches = 0
+	update_progress()
+
 func _check_output():
 	var _current_output = _get_current_output()
 	var _expected_output : int = expected_outputs[input_iter]
@@ -47,8 +55,10 @@ func _check_output():
 	if _outputs_match:
 		_consecutive_matches += 1
 	else:
-		_consecutive_matches = 0
-	output_checked.emit(input_iter, _current_output, float(_consecutive_matches) / float(_consecutive_matches_required))
+		_reset_progress()
+	output_checked.emit(input_iter, _current_output)
+	await get_tree().create_timer(0.1, true).timeout
+	update_progress()
 
 func _get_current_output():
 	var _current_output : int = 0
@@ -68,6 +78,14 @@ func update():
 	_update_inputs()
 	_delay_check_output()
 
+func _connect_socket_signals(socket : Socket2I1O):
+	socket.connect(&"gate_removed", _reset_progress)
+
+func _connect_sockets():
+	for child in get_children():
+		if child is Socket2I1O:
+			_connect_socket_signals(child)
+
 func _on_update_timer_timeout():
 	update()
 
@@ -80,3 +98,6 @@ func toggle_tests(toggled_on : bool):
 func update_test_speed(modifier : float = 1.0):
 	cycle_input_modifier = modifier
 	$UpdateTimer.wait_time = cycle_input_time / cycle_input_modifier
+
+func _ready():
+	_connect_sockets()
