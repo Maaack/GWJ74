@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdqn5itpu6lik"]
+[gd_scene load_steps=12 format=3 uid="uid://bdqn5itpu6lik"]
 
 [ext_resource type="Script" path="res://scenes/game_scene/game_ui.gd" id="1_o8nct"]
 [ext_resource type="PackedScene" uid="uid://6qey5i4wyycm" path="res://scenes/win_screen/win_screen.tscn" id="2_jbiui"]
 [ext_resource type="PackedScene" uid="uid://qtva7e2stx6i" path="res://scenes/lose_screen/lose_screen.tscn" id="3_4wlio"]
+[ext_resource type="PackedScene" uid="uid://cpa0hksdk0vjv" path="res://scenes/win_screen/level_win_screen.tscn" id="3_rtine"]
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="4_nepl5"]
 [ext_resource type="PackedScene" uid="uid://w2h6pmd7u8sy" path="res://scenes/menus/pause_menu/pause_menu.tscn" id="5_v7g7r"]
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/level_list_loader.gd" id="6_5id7q"]
@@ -20,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o8nct")
 win_scene = ExtResource("2_jbiui")
+win_level_scene = ExtResource("3_rtine")
 lose_scene = ExtResource("3_4wlio")
 
 [node name="PauseMenuController" type="Node" parent="."]
@@ -29,7 +31,7 @@ pause_menu_packed = ExtResource("5_v7g7r")
 [node name="LevelLoader" type="Node" parent="." node_paths=PackedStringArray("level_container")]
 script = ExtResource("6_5id7q")
 level_container = NodePath("../UIContainer/HBoxContainer/ViewportContainer/ConfigurableSubViewport")
-files = Array[String](["res://scenes/base_level/levels/easy_level.tscn"])
+files = Array[String](["res://scenes/base_level/levels/easy_level.tscn", "res://scenes/base_level/levels/easy_level_2.tscn"])
 directory = "res://scenes/base_level/levels"
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("7_8u31h")]

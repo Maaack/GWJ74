@@ -5,6 +5,7 @@ extends Gate2I1O
 @export var haunting_pattern : Array[bool]
 
 var _haunting_pattern_counter : int = -1
+var _haunting_incremented : bool = false
 
 func _get_raw_output() -> int:
 	return 0
@@ -15,8 +16,14 @@ func _has_input_haunting() -> bool:
 func _has_pattern_haunting() -> bool:
 	return not haunting_pattern.is_empty()
 
+func _reset_haunting_incremented():
+	_haunting_incremented = false
+
 func _get_next_pattern_haunting_output(raw_output : int) -> int:
-	_haunting_pattern_counter += 1
+	if not _haunting_incremented:
+		_haunting_pattern_counter += 1
+		_haunting_incremented = true
+		_reset_haunting_incremented.call_deferred()
 	if _haunting_pattern_counter >= haunting_pattern.size():
 		_haunting_pattern_counter = 0
 	if haunting_pattern[_haunting_pattern_counter]:

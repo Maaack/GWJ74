@@ -1,6 +1,7 @@
 extends Control
 
 @export var win_scene : PackedScene
+@export var win_level_scene : PackedScene
 @export var lose_scene : PackedScene
 
 var current_level
@@ -12,7 +13,9 @@ func _on_level_lost():
 	InGameMenuController.open_menu(lose_scene, get_viewport())
 
 func _on_level_won():
-	$LevelLoader.advance_and_load_level()
+	InGameMenuController.open_menu(win_level_scene, get_viewport())
+	InGameMenuController.current_menu.continue_pressed.connect(func():$LevelLoader.advance_and_load_level())
+	InGameMenuController.current_menu.restart_pressed.connect(func():$LevelLoader.load_level())
 
 func _try_connecting_signal_to_node(node : Node, signal_name : String, callable : Callable):
 	if node.has_signal(signal_name) and not node.is_connected(signal_name, callable):
@@ -26,9 +29,10 @@ func _boot_tests():
 		for input in range(current_level.input_range):
 			await get_tree().create_timer(0.1).timeout
 			var expected_output = current_level.expected_outputs[input]
-			%TestsContainer.add_test(input, expected_output, current_level.input_wires.size(), current_level.output_wires.size())
+			%TestsContainer.add_test(input, expected_output, current_level.get_input_bit_range(), current_level.get_output_bit_range())
 		await get_tree().create_timer(0.5).timeout
 		%RunButton.button_pressed = true
+		current_level.update_test_speed(%SpeedSlider.value)
 
 func _on_level_check_output(input: int, output: int):
 	%TestsContainer.add_output(input, output)

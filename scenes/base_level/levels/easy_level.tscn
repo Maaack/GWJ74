@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://c5dquppa40dh4" path="res://scenes/sockets/socket.tscn" id="9_k701w"]
 [ext_resource type="PackedScene" uid="uid://bb16q1exnh000" path="res://scenes/io_ports/io_port.tscn" id="10_libs4"]
 
-[node name="EasyLevel" node_paths=PackedStringArray("input_wires", "output_wires") instance=ExtResource("1_alxyc")]
-input_wires = [NodePath("Wire"), NodePath("Wire2")]
-output_wires = [NodePath("Wire3")]
+[node name="EasyLevel" node_paths=PackedStringArray("input_ports", "output_ports") instance=ExtResource("1_alxyc")]
+input_ports = [NodePath("Input1IOPort"), NodePath("Input2IOPort")]
+output_ports = [NodePath("Output1IOPort")]
 expected_outputs = Array[int]([0, 0, 0, 1])
 matches_required = 10
 
@@ -80,18 +80,18 @@ inserted_gate = NodePath("../NorLogicGate")
 position = Vector2(-381, 111)
 inserted_gate = NodePath("../NandLogicGate")
 
-[node name="IOPort" parent="." index="15" node_paths=PackedStringArray("wire") instance=ExtResource("10_libs4")]
+[node name="Input1IOPort" parent="." index="15" node_paths=PackedStringArray("wire") instance=ExtResource("10_libs4")]
 position = Vector2(-260, -290)
 wire = NodePath("../Wire")
 port_name = "Input 1"
 
-[node name="IOPort2" parent="." index="16" node_paths=PackedStringArray("wire") instance=ExtResource("10_libs4")]
+[node name="Input2IOPort" parent="." index="16" node_paths=PackedStringArray("wire") instance=ExtResource("10_libs4")]
 position = Vector2(-260, -77)
 wire = NodePath("../Wire2")
 port_id = 2
 port_name = "Input 2"
 
-[node name="IOPort3" parent="." index="17" node_paths=PackedStringArray("wire") instance=ExtResource("10_libs4")]
+[node name="Output1IOPort" parent="." index="17" node_paths=PackedStringArray("wire") instance=ExtResource("10_libs4")]
 position = Vector2(368, -92)
 wire = NodePath("../Wire3")
 is_output = true

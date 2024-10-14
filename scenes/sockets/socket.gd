@@ -6,15 +6,15 @@ signal gate_inserted(gate : LogicGate)
 signal gate_removed
 
 @export var inserted_gate : LogicGate :
-	set(value):
-		var _value_changed = inserted_gate != value
-		inserted_gate = value
-		if _value_changed and inserted_gate is LogicGate:
-			inserted_gate.global_position = global_position
+	set = insert
 
 func insert(gate : LogicGate):
+	var _value_changed = inserted_gate != gate
 	inserted_gate = gate
-	gate_inserted.emit(inserted_gate)
+	if _value_changed and inserted_gate is LogicGate:
+		inserted_gate.global_position = global_position
+		inserted_gate.connected_socket = self
+		gate_inserted.emit(inserted_gate)
 
 func remove():
 	inserted_gate = null

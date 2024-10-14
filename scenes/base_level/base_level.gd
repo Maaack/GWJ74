@@ -7,14 +7,15 @@ signal progress_updated(progress: float)
 
 const MATCH_REQUIREMENT_MOD = 2.5
 
-@export var input_wires : Array[Wire] :
+@export var input_ports : Array[IOPort] :
 	set(value):
-		input_wires = value
-		input_range = pow(input_wires.size(), 2)
-		expected_outputs.resize(input_range)
-		matches_required = int(input_range * MATCH_REQUIREMENT_MOD)
+		input_ports = value
+		if not input_ports.is_empty():
+			input_range = pow(2, input_ports.size())
+			expected_outputs.resize(input_range)
+			matches_required = int(input_range * MATCH_REQUIREMENT_MOD)
 
-@export var output_wires : Array[Wire]
+@export var output_ports : Array[IOPort]
 @export var expected_outputs : Array[int] = []
 @export var output_check_delay : float = 0.3
 @export var cycle_input_time : float = 0.5
@@ -31,7 +32,8 @@ func _update_inputs():
 		input_iter = 0
 	var _current_input = int(input_iter)
 	var _wire_iter := 0
-	for input_wire in input_wires:
+	for input_port in input_ports:
+		var input_wire = input_port.wire
 		var bit_mask : int = pow(2, _wire_iter)
 		#print("input %d wire iter %d bitmask %d and %d" % [_current_input, _wire_iter, bit_mask, bit_mask & _current_input])
 		var wire_charged : bool = (bit_mask & _current_input) > 0
@@ -48,6 +50,12 @@ func _reset_progress():
 	_consecutive_matches = 0
 	update_progress()
 
+func get_input_bit_range() -> int:
+	return input_ports.size()
+
+func get_output_bit_range() -> int:
+	return output_ports.size()
+
 func _check_output():
 	var _current_output = _get_current_output()
 	var _expected_output : int = expected_outputs[input_iter]
@@ -63,7 +71,8 @@ func _check_output():
 func _get_current_output():
 	var _current_output : int = 0
 	var _wire_iter := 0
-	for output_wire in output_wires:
+	for output_port in output_ports:
+		var output_wire = output_port.wire
 		var bit_value := pow(2, _wire_iter)
 		if round(output_wire.charge) > 0:
 			_current_output += bit_value
