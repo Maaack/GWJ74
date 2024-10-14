@@ -5,3 +5,6 @@
 
 [node name="AndLogicGate" instance=ExtResource("1_cdtof")]
 script = ExtResource("2_7ermp")
+haunted_inputs = Array[int]([])
+haunting_pattern = Array[int]([])
+gate_name = "AND"

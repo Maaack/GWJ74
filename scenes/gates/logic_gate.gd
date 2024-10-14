@@ -4,6 +4,7 @@ extends Node2D
 signal gate_held
 signal gate_dropped
 
+@export var gate_name : String = "UNSET"
 var hovering : bool = false
 var selected : bool = false
 var holding : bool = false

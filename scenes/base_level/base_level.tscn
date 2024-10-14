@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/base_level/base_level.gd" id="1_7im4o"]
 
 [node name="BaseLevel" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_7im4o")
 output_check_delay = 0.2
 

@@ -12,15 +12,15 @@ const MATCH_REQUIREMENT_MOD = 2.5
 		input_wires = value
 		input_range = pow(input_wires.size(), 2)
 		expected_outputs.resize(input_range)
-		_consecutive_matches_required = int(input_range * MATCH_REQUIREMENT_MOD)
+		matches_required = int(input_range * MATCH_REQUIREMENT_MOD)
 
 @export var output_wires : Array[Wire]
 @export var expected_outputs : Array[int] = []
 @export var output_check_delay : float = 0.3
 @export var cycle_input_time : float = 0.5
+@export var matches_required : int
 
 var input_range : int = 0
-var _consecutive_matches_required : int = 0
 var _consecutive_matches : int = 0
 var input_iter : int = -1
 var cycle_input_modifier : float = 1.0
@@ -42,7 +42,7 @@ func _update_inputs():
 		_wire_iter += 1
 
 func update_progress():
-	progress_updated.emit(float(_consecutive_matches) / float(_consecutive_matches_required))
+	progress_updated.emit(float(_consecutive_matches) / float(matches_required))
 
 func _reset_progress():
 	_consecutive_matches = 0

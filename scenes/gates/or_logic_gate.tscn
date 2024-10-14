@@ -8,6 +8,7 @@
 script = ExtResource("2_2hrav")
 haunted_inputs = Array[int]([])
 haunting_pattern = Array[int]([])
+gate_name = "OR"
 
 [node name="ShadowSprite2D" parent="." index="0"]
 texture = ExtResource("3_fjep8")

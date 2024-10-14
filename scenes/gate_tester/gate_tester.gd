@@ -2,7 +2,9 @@ class_name Gate2I1OTester
 extends Node2D
 
 @export var test_time : float = 0.25
+@export var reads_gate_type : bool = false
 
+@onready var gate_type_label : Label = %GateTypeLabel
 @onready var output_00_label : Label = %Output00Label
 @onready var output_01_label : Label = %Output01Label
 @onready var output_10_label : Label = %Output10Label
@@ -18,6 +20,7 @@ extends Node2D
 func clear_outputs():
 	for output in outputs:
 		output.text = ""
+	gate_type_label.text = ""
 
 func test_gate(input_1 : int, input_2 : int, gate : Gate2I1O) -> int:
 	gate.input_1 = input_1
@@ -27,6 +30,8 @@ func test_gate(input_1 : int, input_2 : int, gate : Gate2I1O) -> int:
 func test_gate_suite(gate : Gate2I1O):
 	clear_outputs()
 	var iter = 0
+	if reads_gate_type:
+		gate_type_label.text = gate.gate_name
 	for test in range(outputs.size()):
 		if iter > outputs.size(): break
 		await get_tree().create_timer(test_time, false).timeout
@@ -34,7 +39,6 @@ func test_gate_suite(gate : Gate2I1O):
 		var test_input_1 : int = int((test & 1) > 0)
 		var test_input_2 : int = int((test & 2) > 0)
 		var _result : int = test_gate(test_input_1, test_input_2, gate)
-		print("%d %d is %d" % [test_input_1, test_input_2, _result])
 		iter += 1
 		_output_label.text = "%d" % int(_result)
 

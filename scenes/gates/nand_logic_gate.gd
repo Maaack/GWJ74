@@ -1,4 +1,4 @@
-class_name NandLogicGate
+class_name NAndLogicGate
 extends HauntableGate2I1O
 
 func _get_raw_output() -> int:

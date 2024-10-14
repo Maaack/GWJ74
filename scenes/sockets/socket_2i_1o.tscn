@@ -8,12 +8,12 @@ script = ExtResource("2_hqd63")
 
 [node name="Input1Line2D" type="Line2D" parent="." index="2"]
 points = PackedVector2Array(-82, -15, -42, -15)
-width = 5.0
+width = 4.0
 
 [node name="Input2Line2D" type="Line2D" parent="." index="3"]
 points = PackedVector2Array(-82, 15, -42, 15)
-width = 5.0
+width = 4.0
 
 [node name="Output1Line2D" type="Line2D" parent="." index="4"]
 points = PackedVector2Array(82, 0, 42, 0)
-width = 5.0
+width = 4.0

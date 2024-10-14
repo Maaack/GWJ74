@@ -4,8 +4,11 @@
 [ext_resource type="Script" path="res://scenes/gates/nand_logic_gate.gd" id="2_a68l1"]
 [ext_resource type="Texture2D" uid="uid://hoxxg2gimqh4" path="res://assets/images/logic-gate-nand.png" id="3_tp5rh"]
 
-[node name="NandLogicGate" instance=ExtResource("1_sgugg")]
+[node name="NAndLogicGate" instance=ExtResource("1_sgugg")]
 script = ExtResource("2_a68l1")
+haunted_inputs = Array[int]([])
+haunting_pattern = Array[int]([])
+gate_name = "NAND"
 
 [node name="ShadowSprite2D" parent="." index="0"]
 texture = ExtResource("3_tp5rh")

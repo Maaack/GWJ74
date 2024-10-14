@@ -6,6 +6,9 @@
 
 [node name="NorLogicGate" instance=ExtResource("1_7o54q")]
 script = ExtResource("2_on1lg")
+haunted_inputs = Array[int]([])
+haunting_pattern = Array[int]([])
+gate_name = "NOR"
 
 [node name="ShadowSprite2D" parent="." index="0"]
 texture = ExtResource("4_cafnp")
