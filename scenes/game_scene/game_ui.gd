@@ -19,6 +19,7 @@ func _try_connecting_signal_to_node(node : Node, signal_name : String, callable 
 		node.connect(signal_name, callable)
 
 func _boot_tests():
+	%RunButton.button_pressed = false
 	%TestsContainer.clear()
 	%TestingProgressBar.value = 0
 	if current_level is BaseLevel:
@@ -27,7 +28,7 @@ func _boot_tests():
 			var expected_output = current_level.expected_outputs[input]
 			%TestsContainer.add_test(input, expected_output, current_level.input_wires.size())
 		await get_tree().create_timer(0.5).timeout
-		current_level.start_updates()
+		%RunButton.button_pressed = true
 
 func _on_level_check_output(input: int, output: int, progress: float):
 	%TestsContainer.add_output(input, output)
@@ -51,3 +52,11 @@ func _on_level_loader_levels_finished():
 
 func _on_level_loader_level_load_started():
 	$LoadingScreen.reset()
+
+func _on_run_button_toggled(toggled_on):
+	if current_level is BaseLevel:
+		current_level.toggle_tests(toggled_on)
+
+func _on_speed_slider_value_changed(value):
+	if current_level is BaseLevel:
+		current_level.update_test_speed(value)

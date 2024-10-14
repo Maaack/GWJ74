@@ -22,6 +22,7 @@ var input_range : int = 0
 var _consecutive_matches_required : int = 0
 var _consecutive_matches : int = 0
 var input_iter : int = -1
+var cycle_input_modifier : float = 1.0
 
 func _update_inputs():
 	input_iter += 1
@@ -70,5 +71,12 @@ func update():
 func _on_update_timer_timeout():
 	update()
 
-func start_updates():
-	$UpdateTimer.start(cycle_input_time)
+func toggle_tests(toggled_on : bool):
+	if toggled_on:
+		$UpdateTimer.start(cycle_input_time / cycle_input_modifier)
+	else:
+		$UpdateTimer.stop()
+
+func update_test_speed(modifier : float = 1.0):
+	cycle_input_modifier = modifier
+	$UpdateTimer.wait_time = cycle_input_time / cycle_input_modifier
