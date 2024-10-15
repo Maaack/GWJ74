@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvyljjp8jjudo"]
+
+[ext_resource type="Script" path="res://scenes/base_level/level_camera.gd" id="1_1sucr"]
+
+[node name="Camera2D" type="Camera2D"]
+script = ExtResource("1_1sucr")
+max_zoom = 4.0
+min_zoom = 0.2

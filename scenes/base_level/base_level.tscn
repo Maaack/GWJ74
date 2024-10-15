@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjlxayc5mxtjo"]
+[gd_scene load_steps=3 format=3 uid="uid://bjlxayc5mxtjo"]
 
 [ext_resource type="Script" path="res://scenes/base_level/base_level.gd" id="1_7im4o"]
+[ext_resource type="PackedScene" uid="uid://dvyljjp8jjudo" path="res://scenes/base_level/level_camera.tscn" id="2_jyndy"]
 
 [node name="BaseLevel" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_7im4o")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="LevelCamera" parent="." instance=ExtResource("2_jyndy")]
 
 [node name="UpdateTimer" type="Timer" parent="."]
 
