@@ -5,7 +5,6 @@
 [node name="BaseLevel" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_7im4o")
-output_check_delay = 0.2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

@@ -17,7 +17,7 @@ const MATCH_REQUIREMENT_MOD = 4
 
 @export var output_ports : Array[IOPort]
 @export var expected_outputs : Array[int] = []
-@export var output_check_delay : float = 0.3
+@export var output_check_delay : float = 0.1
 @export var cycle_input_time : float = 0.5
 @export var matches_required : int
 
