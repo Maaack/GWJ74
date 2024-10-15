@@ -107,7 +107,7 @@ port_name = "Input 2"
 
 [node name="Output1IOPort" parent="." index="20" node_paths=PackedStringArray("wire") instance=ExtResource("10_libs4")]
 position = Vector2(364, 0)
-wire = NodePath("../Wire3")
+wire = NodePath("../Wire6")
 is_output = true
 port_name = "Output 1"
 
