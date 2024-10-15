@@ -8,5 +8,3 @@ width = 4.0
 script = ExtResource("1_i7vfm")
 start_position = Vector2(-40, 0)
 end_position = Vector2(40, 0)
-start_global_position = null
-end_global_position = null

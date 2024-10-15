@@ -5,7 +5,7 @@ extends Node2D
 signal output_checked(input: int, output: int)
 signal progress_updated(progress: float)
 
-const MATCH_REQUIREMENT_MOD = 2.5
+const MATCH_REQUIREMENT_MOD = 4
 
 @export var input_ports : Array[IOPort] :
 	set(value):

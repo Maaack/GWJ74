@@ -60,39 +60,29 @@ position = Vector2(-128, -107)
 points = PackedVector2Array(-132, -183, -132, -111)
 start_position = Vector2(-132, -183)
 end_position = Vector2(-132, -111)
-start_global_position = Vector2(-260, -290)
-end_global_position = Vector2(-260, -218)
 
 [node name="Wire2" parent="." index="11" instance=ExtResource("8_v0qbe")]
 position = Vector2(-128, -77)
 points = PackedVector2Array(-129, -76, 40, 0)
 start_position = Vector2(-129, -76)
-start_global_position = Vector2(-257, -153)
-end_global_position = Vector2(0, 0)
 
 [node name="Wire3" parent="." index="12" instance=ExtResource("8_v0qbe")]
 position = Vector2(-41, -217)
 points = PackedVector2Array(-215, 219, 409, 125)
 start_position = Vector2(-215, 219)
 end_position = Vector2(409, 125)
-start_global_position = Vector2(-256, 2)
-end_global_position = Vector2(368, -92)
 
 [node name="Wire4" parent="." index="13" instance=ExtResource("8_v0qbe")]
 position = Vector2(-213, -2)
 points = PackedVector2Array(-43, 4, 581, -90)
 start_position = Vector2(-43, 4)
 end_position = Vector2(581, -90)
-start_global_position = Vector2(-256, 2)
-end_global_position = Vector2(368, -92)
 
 [node name="Wire5" parent="." index="14" instance=ExtResource("8_v0qbe")]
 position = Vector2(131, -92)
 points = PackedVector2Array(-387, 94, 237, 0)
 start_position = Vector2(-387, 94)
 end_position = Vector2(237, 0)
-start_global_position = Vector2(-256, 2)
-end_global_position = Vector2(368, -92)
 
 [node name="UpdateTimer" parent="." index="15"]
 wait_time = 0.5

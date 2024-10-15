@@ -1,22 +1,25 @@
+@tool
 class_name Socket2I1O
 extends Socket2D
 
 @export var input_1_wire : Wire :
 	set(value):
 		input_1_wire = value
+		_update_wire_input_1_position()
 		if input_1_wire is Wire:
 			_try_to_connect_signal_to_node(input_1_wire, &"charge_changed", func(_a):update())
-			input_1_wire.end_position = get_input_1_global_position()
 
 @export var input_2_wire : Wire :
 	set(value):
 		input_2_wire = value
+		_update_wire_input_2_position()
 		if input_2_wire is Wire:
 			_try_to_connect_signal_to_node(input_2_wire, &"charge_changed", func(_a):update())
-			input_2_wire.end_position = get_input_2_global_position()
 
-@export var output_1_wire : Wire
-
+@export var output_1_wire : Wire : 
+	set(value):
+		output_1_wire = value
+		_update_wire_output_1_position()
 
 func get_input_1_global_position() -> Vector2:
 	return $Input1Line2D.global_position + $Input1Line2D.points[0]

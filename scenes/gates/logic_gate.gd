@@ -1,3 +1,4 @@
+@tool
 class_name LogicGate
 extends Node2D
 

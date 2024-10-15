@@ -14,14 +14,14 @@ signal charge_changed(new_charge : float)
 		end_position = value
 		_update_line()
 
-@export var start_global_position : Vector2 :
+var start_global_position : Vector2 :
 	set(value):
 		var _value_changed = start_global_position != value
 		start_global_position = value
 		if _value_changed:
 			start_position = start_global_position - global_position
 
-@export var end_global_position : Vector2 :
+var end_global_position : Vector2 :
 	set(value):
 		var _value_changed = end_global_position != value
 		end_global_position = value
