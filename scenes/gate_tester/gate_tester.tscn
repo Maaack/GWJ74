@@ -7,26 +7,47 @@
 script = ExtResource("1_0tvmm")
 metadata/_edit_horizontal_guides_ = [-15.0, 15.0, 0.0]
 
-[node name="Socket2I1O" parent="." instance=ExtResource("2_4upxj")]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -117.0
+offset_top = -73.0
+offset_right = 465.0
+offset_bottom = 71.0
+mouse_filter = 2
+color = Color(0.129558, 0.129558, 0.129558, 1)
 
-[node name="TestingUI" type="Node2D" parent="."]
-position = Vector2(269, 0)
+[node name="PowerButton" type="CheckButton" parent="ColorRect"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 115.0
+offset_right = 105.0
+offset_bottom = 146.0
+button_pressed = true
+text = "Off/On"
 
-[node name="Panel" type="Panel" parent="TestingUI"]
+[node name="RepeatButton" type="CheckButton" parent="ColorRect"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 115.0
+offset_right = 206.0
+offset_bottom = 146.0
+text = "Repeat"
+
+[node name="Panel" type="Panel" parent="ColorRect"]
 custom_minimum_size = Vector2(360, 120)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -60.0
-offset_right = 180.0
-offset_bottom = 60.0
+offset_left = -85.0
+offset_top = -59.0
+offset_right = 275.0
+offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TestingUI/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,22 +59,22 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="TestingUI/Panel/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="ColorRect/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="TestingUI/Panel/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="ColorRect/Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 4
 
-[node name="CornerHeader" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="CornerHeader" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="GateTypeLabel" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/CornerHeader"]
+[node name="GateTypeLabel" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/CornerHeader"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -64,13 +85,13 @@ grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RowHeader1" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="RowHeader1" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/RowHeader1"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/RowHeader1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,13 +102,13 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RowHeader2" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="RowHeader2" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/RowHeader2"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/RowHeader2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,13 +119,13 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RowHeader3" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="RowHeader3" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/RowHeader3"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/RowHeader3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,13 +136,13 @@ text = "input 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColumnHeader1" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="ColumnHeader1" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/ColumnHeader1"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/ColumnHeader1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,13 +153,13 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Output00" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="Output00" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Output00Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/Output00"]
+[node name="Output00Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/Output00"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -150,13 +171,13 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Output01" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="Output01" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Output01Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/Output01"]
+[node name="Output01Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/Output01"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -168,13 +189,13 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer2" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="Spacer2" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/Spacer2"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/Spacer2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,13 +205,13 @@ grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColumnHeader2" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="ColumnHeader2" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/ColumnHeader2"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/ColumnHeader2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -202,13 +223,13 @@ text = "1
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Output10" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="Output10" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Output10Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/Output10"]
+[node name="Output10Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/Output10"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -220,13 +241,13 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Output11" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="Output11" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Output11Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/Output11"]
+[node name="Output11Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/Output11"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -238,13 +259,13 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer3" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="Spacer3" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/Spacer3"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/Spacer3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -254,13 +275,13 @@ grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColumnHeader3" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="ColumnHeader3" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/ColumnHeader3"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/ColumnHeader3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -271,13 +292,13 @@ text = "input 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer4" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="Spacer4" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/Spacer4"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/Spacer4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -287,13 +308,13 @@ grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer5" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="Spacer5" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/Spacer5"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/Spacer5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -303,13 +324,13 @@ grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BottomCorner" type="ColorRect" parent="TestingUI/Panel/MarginContainer/GridContainer"]
+[node name="BottomCorner" type="ColorRect" parent="ColorRect/Panel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TestingUI/Panel/MarginContainer/GridContainer/BottomCorner"]
+[node name="Label" type="Label" parent="ColorRect/Panel/MarginContainer/GridContainer/BottomCorner"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -322,6 +343,17 @@ text = "output 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 2.0
+offset_right = 184.0
+offset_bottom = 25.0
+text = "2I1O Gate Tester"
 
+[node name="Socket2I1O" parent="." instance=ExtResource("2_4upxj")]
+unique_name_in_owner = true
+
+[connection signal="toggled" from="ColorRect/PowerButton" to="." method="_on_power_button_toggled"]
+[connection signal="toggled" from="ColorRect/RepeatButton" to="." method="_on_repeat_button_toggled"]
 [connection signal="gate_inserted" from="Socket2I1O" to="." method="_on_socket_2i_1o_gate_inserted"]

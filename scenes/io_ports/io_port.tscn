@@ -9,6 +9,7 @@
 script = ExtResource("1_q6asq")
 
 [node name="Computing" type="Sprite2D" parent="."]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
 position = Vector2(-48, 0)
 texture = ExtResource("2_36bn4")
 
