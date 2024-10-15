@@ -12,9 +12,12 @@ func _ready():
 func _on_level_lost():
 	InGameMenuController.open_menu(lose_scene, get_viewport())
 
+func _on_level_skipped():
+	$LevelLoader.advance_and_load_level()
+
 func _on_level_won():
 	InGameMenuController.open_menu(win_level_scene, get_viewport())
-	InGameMenuController.current_menu.continue_pressed.connect(func():$LevelLoader.advance_and_load_level())
+	InGameMenuController.current_menu.continue_pressed.connect(_on_level_skipped)
 	InGameMenuController.current_menu.restart_pressed.connect(func():$LevelLoader.load_level())
 
 func _try_connecting_signal_to_node(node : Node, signal_name : String, callable : Callable):
@@ -25,7 +28,9 @@ func _boot_tests():
 	%RunButton.button_pressed = false
 	%TestsContainer.clear()
 	%TestingProgressBar.value = 0
+	%SidePanelUI.hide()
 	if current_level is BaseLevel:
+		%SidePanelUI.show()
 		for input in range(current_level.input_range):
 			await get_tree().create_timer(0.1).timeout
 			var expected_output = current_level.expected_outputs[input]
@@ -48,6 +53,7 @@ func _on_level_loader_level_loaded():
 	current_level = $LevelLoader.current_level
 	await current_level.ready
 	_try_connecting_signal_to_node(current_level, &"level_won", _on_level_won)
+	_try_connecting_signal_to_node(current_level, &"level_skipped", _on_level_skipped)
 	_try_connecting_signal_to_node(current_level, &"output_checked", _on_level_check_output)
 	_try_connecting_signal_to_node(current_level, &"progress_updated", _on_level_progress_updated)
 	_boot_tests()

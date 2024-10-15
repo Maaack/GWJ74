@@ -1,0 +1,177 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddun0ho0p3h0p"]
+
+[ext_resource type="Script" path="res://scenes/base_level/levels/game_intro.gd" id="1_oofn5"]
+
+[sub_resource type="Animation" id="Animation_ru1n7"]
+resource_name = "START"
+length = 16.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/ScrollContainer:scroll_vertical")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 991]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(16),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"level_complete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_20wtw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/ScrollContainer:scroll_vertical")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ld4h"]
+_data = {
+"RESET": SubResource("Animation_20wtw"),
+"START": SubResource("Animation_ru1n7")
+}
+
+[node name="GameIntro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oofn5")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HeaderSpacer" type="Control" parent="CenterContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 400)
+layout_mode = 2
+
+[node name="StoryLabel" type="RichTextLabel" parent="CenterContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(319, 283)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]In the year 2XXX, the Apocalyptic War
+
+caused the dead to outnumber the living.
+
+For the first time in a long time,
+
+humanity hid their faces in the dirt...
+
+while ghosts and ghouls...
+
+freely roamed the surface of the earth.
+
+
+
+In the XXX years since, their influence waned.
+
+Once they could mold the largest mammals,
+
+even people, to their grotesque will.
+
+Eventually, only the rodents succumbed.
+
+Today, the influence of those ancient ghosts
+
+is even more minor, but still present here.
+
+
+
+You'll have to contend with...
+
+
+
+
+
+[wave amp=50.0 freq=5.0 connected=1]Haunted Circuits!!![/wave][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="FooterSpacer" type="Control" parent="CenterContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 400)
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ld4h")
+}
+autoplay = "START"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SkipLabel" type="Label" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press again to skip."
+horizontal_alignment = 1
+
+[node name="SkipTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
+one_shot = true

@@ -1,11 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dt28qbvx3wa07"]
+[gd_scene load_steps=9 format=3 uid="uid://dt28qbvx3wa07"]
 
 [ext_resource type="PackedScene" uid="uid://bjlxayc5mxtjo" path="res://scenes/base_level/base_level.tscn" id="1_u684e"]
 [ext_resource type="PackedScene" uid="uid://bkdu767lr5ip1" path="res://scenes/gate_tester/gate_tester.tscn" id="2_17t0l"]
 [ext_resource type="PackedScene" uid="uid://4nc6f5wtwhcn" path="res://scenes/gates/and_logic_gate.tscn" id="3_0gkkd"]
-[ext_resource type="PackedScene" uid="uid://dp20aewto6ku6" path="res://scenes/gates/or_logic_gate.tscn" id="4_oxm3u"]
-[ext_resource type="PackedScene" uid="uid://cj4xrqn3u2qan" path="res://scenes/gates/nor_logic_gate.tscn" id="5_8l73t"]
-[ext_resource type="PackedScene" uid="uid://chnbat3fevrv7" path="res://scenes/gates/nand_logic_gate.tscn" id="6_p24vd"]
 [ext_resource type="PackedScene" uid="uid://b73alytko4pev" path="res://scenes/sockets/socket_2i_1o.tscn" id="7_uf2xt"]
 [ext_resource type="PackedScene" uid="uid://cvriurvuudiom" path="res://scenes/wires/wire.tscn" id="8_v0qbe"]
 [ext_resource type="PackedScene" uid="uid://c5dquppa40dh4" path="res://scenes/sockets/socket.tscn" id="9_8t7so"]
@@ -32,14 +29,15 @@ haunted_inputs = Array[int]([2])
 position = Vector2(232, 0)
 haunted_inputs = Array[int]([2])
 
-[node name="OrLogicGate" parent="." index="5" instance=ExtResource("4_oxm3u")]
+[node name="AndLogicGate4" parent="." index="5" instance=ExtResource("3_0gkkd")]
 position = Vector2(-397, -121)
-haunted_inputs = Array[int]([0, 1])
+haunted_inputs = Array[int]([1])
 
-[node name="NorLogicGate" parent="." index="6" instance=ExtResource("5_8l73t")]
+[node name="AndLogicGate5" parent="." index="6" instance=ExtResource("3_0gkkd")]
 position = Vector2(-397, -6)
+haunted_inputs = Array[int]([1])
 
-[node name="NandLogicGate" parent="." index="7" instance=ExtResource("6_p24vd")]
+[node name="AndLogicGate6" parent="." index="7" instance=ExtResource("3_0gkkd")]
 position = Vector2(-397, 111)
 
 [node name="Socket2I1O" parent="." index="8" node_paths=PackedStringArray("input_1_wire", "input_2_wire", "output_1_wire", "inserted_gate") instance=ExtResource("7_uf2xt")]
@@ -119,15 +117,15 @@ inserted_gate = NodePath("../AndLogicGate")
 
 [node name="Socket2" parent="." index="21" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("9_8t7so")]
 position = Vector2(-397, -121)
-inserted_gate = NodePath("../OrLogicGate")
+inserted_gate = NodePath("../AndLogicGate4")
 
 [node name="Socket3" parent="." index="22" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("9_8t7so")]
 position = Vector2(-397, -6)
-inserted_gate = NodePath("../NorLogicGate")
+inserted_gate = NodePath("../AndLogicGate5")
 
 [node name="Socket4" parent="." index="23" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("9_8t7so")]
 position = Vector2(-397, 111)
-inserted_gate = NodePath("../NandLogicGate")
+inserted_gate = NodePath("../AndLogicGate6")
 
 [node name="Input1IOPort" parent="." index="24" node_paths=PackedStringArray("wire") instance=ExtResource("10_vjf8d")]
 position = Vector2(-264, -198)
