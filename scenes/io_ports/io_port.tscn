@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://cak27uc81pqi" path="res://assets/images/plain-circle.png" id="2_dswsg"]
 [ext_resource type="Texture2D" uid="uid://brjhbfwj3gguq" path="res://assets/images/plain-circle-black-32x32.png" id="3_exqel"]
 
-[node name="IOPort" type="Node2D"]
+[node name="IOPort" type="Node2D" node_paths=PackedStringArray("wires")]
 script = ExtResource("1_q6asq")
+wires = [null]
 
 [node name="Computing" type="Sprite2D" parent="."]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)

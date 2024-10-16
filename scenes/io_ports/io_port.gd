@@ -2,10 +2,16 @@
 class_name IOPort
 extends Node2D
 
+@export var wires : Array[Wire] :
+	set(value):
+		wires = value
+		_update_wire()
+
 @export var wire : Wire :
 	set(value):
 		wire = value
 		_update_wire()
+		wires.append(wire)
 
 @export var is_output : bool = false:
 	set(value):
@@ -51,3 +57,7 @@ func update():
 
 func get_io_global_position() -> Vector2:
 	return %WireConnection.global_position
+
+func _ready():
+	wires.clear()
+	wire = wire

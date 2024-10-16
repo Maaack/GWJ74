@@ -54,12 +54,14 @@ output_1_wire = NodePath("../Wire3")
 [node name="Socket" parent="." index="7" instance=ExtResource("9_7w8bh")]
 position = Vector2(756, -154)
 
-[node name="Input1IOPort" parent="." index="8" node_paths=PackedStringArray("wire") instance=ExtResource("10_1qy2o")]
+[node name="Input1IOPort" parent="." index="8" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("10_1qy2o")]
+wires = [NodePath("../Wire"), NodePath("../Wire")]
 wire = NodePath("../Wire")
 port_name = "Input 1"
 
-[node name="Output1IOPort" parent="." index="9" node_paths=PackedStringArray("wire") instance=ExtResource("10_1qy2o")]
+[node name="Output1IOPort" parent="." index="9" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("10_1qy2o")]
 position = Vector2(1006, 0)
+wires = [NodePath("../Wire6"), NodePath("../Wire6")]
 wire = NodePath("../Wire6")
 is_output = true
 port_name = "Output 1"
