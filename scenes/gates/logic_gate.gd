@@ -56,6 +56,7 @@ func _update_position():
 
 func _hold():
 	selected = true
+	$HoldStreamPlayer2D.play()
 	if connected_socket:
 		connected_socket.remove()
 		connected_socket = null
@@ -69,6 +70,7 @@ func _drop():
 	if holding: 
 		holding = false
 	selected = false
+	$DropStreamPlayer2D.play()
 	if not _snap_to_relative_position.is_zero_approx():
 		position += _snap_to_relative_position
 		if _snap_to_relative_position == _nearest_socket_relative_position:

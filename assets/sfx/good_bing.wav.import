@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://rrmxvy7gsq0t"
-path="res://.godot/imported/decay-1.wav-34be497c9ddf5c4756c4febe41758a51.sample"
+uid="uid://cgjt5j5a1e33y"
+path="res://.godot/imported/good_bing.wav-51930530cf8b377096aa4ccef492ec1e.sample"
 
 [deps]
 
-source_file="res://assets/sfx/decay-1.wav"
-dest_files=["res://.godot/imported/decay-1.wav-34be497c9ddf5c4756c4febe41758a51.sample"]
+source_file="res://assets/sfx/good_bing.wav"
+dest_files=["res://.godot/imported/good_bing.wav-51930530cf8b377096aa4ccef492ec1e.sample"]
 
 [params]
 

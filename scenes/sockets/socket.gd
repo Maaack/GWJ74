@@ -13,6 +13,8 @@ signal gate_removed
 			if inserted_gate is LogicGate:
 				inserted_gate.global_position = global_position
 				inserted_gate.connected_socket = self
+				if $GateInsertedStreamPlayer2D.is_inside_tree():
+					$GateInsertedStreamPlayer2D.play()
 				gate_inserted.emit(inserted_gate)
 			else:
 				gate_removed.emit()

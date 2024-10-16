@@ -6,6 +6,8 @@ extends Control
 
 var current_level
 
+var _muted : bool = false
+
 func _ready():
 	InGameMenuController.scene_tree = get_tree()
 
@@ -42,10 +44,26 @@ func _boot_tests():
 func _on_level_check_output(input: int, output: int):
 	%TestsContainer.add_output(input, output)
 
+func _play_lost_progress_effect():
+	if _muted: return
+	if $LostProgressTimer.is_stopped():
+		$LostProgressTimer.start()
+		$LostProgressStreamPlayer.play()
+
+func _play_gained_progress_effect():
+	if _muted: return
+	if $GainedProgressTimer.is_stopped():
+		$GainedProgressTimer.start()
+		$GainedProgressStreamPlayer.play()
+
 func _on_level_progress_updated(progress: float):
 	var tween = create_tween()
 	tween.tween_property(%TestingProgressBar, "value", progress, 0.1)
 	await get_tree().create_timer(0.1).timeout
+	if progress == 0:
+		_play_lost_progress_effect()
+	else:
+		_play_gained_progress_effect()
 	if progress == 1.0:
 		_on_level_won()
 
@@ -72,3 +90,7 @@ func _on_run_button_toggled(toggled_on):
 func _on_speed_slider_value_changed(value):
 	if current_level is BaseLevel:
 		current_level.update_test_speed(value)
+
+
+func _on_mute_button_toggled(toggled_on):
+	_muted = toggled_on

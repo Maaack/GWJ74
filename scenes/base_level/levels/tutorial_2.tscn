@@ -12,7 +12,7 @@
 input_ports = [NodePath("Input1IOPort")]
 output_ports = [NodePath("Output1IOPort")]
 expected_outputs = Array[int]([0, 1])
-matches_required = 8
+matches_required = 6
 
 [node name="UpdateTimer" parent="." index="1"]
 wait_time = 0.5

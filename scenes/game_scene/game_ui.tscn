@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdqn5itpu6lik"]
+[gd_scene load_steps=15 format=3 uid="uid://bdqn5itpu6lik"]
 
 [ext_resource type="Script" path="res://scenes/game_scene/game_ui.gd" id="1_o8nct"]
 [ext_resource type="PackedScene" uid="uid://6qey5i4wyycm" path="res://scenes/win_screen/win_screen.tscn" id="2_jbiui"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://scenes/game_scene/configurable_sub_viewport.gd" id="9_83mcf"]
 [ext_resource type="PackedScene" uid="uid://bfg41a14ehxfc" path="res://scenes/game_scene/tests_container.tscn" id="10_wir5e"]
 [ext_resource type="Theme" uid="uid://bnhyhwsditx5o" path="res://resources/ui_theme.tres" id="11_wi57r"]
+[ext_resource type="AudioStream" uid="uid://ddbfueadnujo2" path="res://assets/sfx/bad_bing.wav" id="13_1ioki"]
+[ext_resource type="AudioStream" uid="uid://cgjt5j5a1e33y" path="res://assets/sfx/good_bing.wav" id="14_sav1d"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -75,19 +77,27 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UIContainer/HBoxContainer/SidePanelUI"]
 custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
-offset_left = 4.0
-offset_right = 324.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("11_wi57r")
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 64
+theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 64
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/HBoxContainer/SidePanelUI/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
+
+[node name="RunButton" type="CheckButton" parent="UIContainer/HBoxContainer/SidePanelUI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Off/On"
 
 [node name="TestingProgressLabel" type="Label" parent="UIContainer/HBoxContainer/SidePanelUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -104,10 +114,11 @@ step = 0.001
 [node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/HBoxContainer/SidePanelUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RunButton" type="CheckButton" parent="UIContainer/HBoxContainer/SidePanelUI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MuteButton" type="CheckButton" parent="UIContainer/HBoxContainer/SidePanelUI/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Off/On"
+size_flags_horizontal = 8
+text = "Mute"
 
 [node name="SpeedSlider" type="HSlider" parent="UIContainer/HBoxContainer/SidePanelUI/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -127,8 +138,27 @@ unique_name_in_owner = true
 layout_mode = 2
 alignment = 0
 
+[node name="LostProgressStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_1ioki")
+volume_db = -25.0
+bus = &"SFX"
+
+[node name="GainedProgressStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_sav1d")
+volume_db = -25.0
+bus = &"SFX"
+
+[node name="LostProgressTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="GainedProgressTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="level_load_started" from="LevelLoader" to="." method="_on_level_loader_level_load_started"]
 [connection signal="level_loaded" from="LevelLoader" to="." method="_on_level_loader_level_loaded"]
 [connection signal="levels_finished" from="LevelLoader" to="." method="_on_level_loader_levels_finished"]
-[connection signal="toggled" from="UIContainer/HBoxContainer/SidePanelUI/MarginContainer/VBoxContainer/HBoxContainer/RunButton" to="." method="_on_run_button_toggled"]
+[connection signal="toggled" from="UIContainer/HBoxContainer/SidePanelUI/MarginContainer/VBoxContainer/RunButton" to="." method="_on_run_button_toggled"]
+[connection signal="toggled" from="UIContainer/HBoxContainer/SidePanelUI/MarginContainer/VBoxContainer/HBoxContainer/MuteButton" to="." method="_on_mute_button_toggled"]
 [connection signal="value_changed" from="UIContainer/HBoxContainer/SidePanelUI/MarginContainer/VBoxContainer/HBoxContainer/SpeedSlider" to="." method="_on_speed_slider_value_changed"]
