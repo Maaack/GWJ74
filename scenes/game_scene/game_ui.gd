@@ -18,9 +18,12 @@ func _on_level_skipped():
 	$LevelLoader.advance_and_load_level()
 
 func _on_level_won():
-	InGameMenuController.open_menu(win_level_scene, get_viewport())
-	InGameMenuController.current_menu.continue_pressed.connect(_on_level_skipped)
-	InGameMenuController.current_menu.restart_pressed.connect(func():$LevelLoader.load_level())
+	if $LevelLoader.is_on_last_level():
+		InGameMenuController.open_menu(win_scene, get_viewport())
+	else:
+		InGameMenuController.open_menu(win_level_scene, get_viewport())
+		InGameMenuController.current_menu.continue_pressed.connect(_on_level_skipped)
+		InGameMenuController.current_menu.restart_pressed.connect(func():$LevelLoader.load_level())
 
 func _try_connecting_signal_to_node(node : Node, signal_name : String, callable : Callable):
 	if node.has_signal(signal_name) and not node.is_connected(signal_name, callable):

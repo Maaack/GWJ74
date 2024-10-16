@@ -127,30 +127,26 @@ inserted_gate = NodePath("../AndLogicGate5")
 position = Vector2(-397, 111)
 inserted_gate = NodePath("../AndLogicGate6")
 
-[node name="Input1IOPort" parent="." index="24" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("7_75piw")]
+[node name="Input1IOPort" parent="." index="24" node_paths=PackedStringArray("wires") instance=ExtResource("7_75piw")]
 position = Vector2(-264, -198)
 wires = [NodePath("../Wire")]
-wire = NodePath("../Wire")
 port_name = "Input 1"
 
-[node name="Input2IOPort" parent="." index="25" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("7_75piw")]
+[node name="Input2IOPort" parent="." index="25" node_paths=PackedStringArray("wires") instance=ExtResource("7_75piw")]
 position = Vector2(-264, -69)
 wires = [NodePath("../Wire2")]
-wire = NodePath("../Wire2")
 port_id = 2
 port_name = "Input 2"
 
-[node name="Input3IOPort" parent="." index="26" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("7_75piw")]
+[node name="Input3IOPort" parent="." index="26" node_paths=PackedStringArray("wires") instance=ExtResource("7_75piw")]
 position = Vector2(-264, 59)
 wires = [NodePath("../Wire7")]
-wire = NodePath("../Wire7")
 port_id = 3
 port_name = "Input 3"
 
-[node name="Output1IOPort" parent="." index="27" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("7_75piw")]
+[node name="Output1IOPort" parent="." index="27" node_paths=PackedStringArray("wires") instance=ExtResource("7_75piw")]
 position = Vector2(364, 0)
 wires = [NodePath("../Wire9")]
-wire = NodePath("../Wire9")
 is_output = true
 port_name = "Output 1"
 
@@ -175,9 +171,9 @@ input_wire = NodePath("../Wire3")
 output_wire = NodePath("../Wire6")
 
 [node name="Label4" type="Label" parent="." index="33"]
-offset_left = -1283.0
+offset_left = -1043.0
 offset_top = -40.0
-offset_right = -1007.0
+offset_right = -767.0
 offset_bottom = 35.0
 theme_type_variation = &"ScareLabel"
 text = "You are being followed."

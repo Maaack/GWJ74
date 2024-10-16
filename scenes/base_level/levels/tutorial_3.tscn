@@ -79,23 +79,20 @@ input_1_wire = NodePath("../Wire4")
 output_1_wire = NodePath("../Wire3")
 inserted_gate = NodePath("../AndLogicGate2")
 
-[node name="Input1IOPort" parent="." index="13" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("5_jstkx")]
+[node name="Input1IOPort" parent="." index="13" node_paths=PackedStringArray("wires") instance=ExtResource("5_jstkx")]
 position = Vector2(-300, -104)
 wires = [NodePath("../Wire")]
-wire = NodePath("../Wire")
 port_name = "Input 1"
 
-[node name="Input2IOPort" parent="." index="14" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("5_jstkx")]
+[node name="Input2IOPort" parent="." index="14" node_paths=PackedStringArray("wires") instance=ExtResource("5_jstkx")]
 position = Vector2(-300, 104)
 wires = [NodePath("../Wire2")]
-wire = NodePath("../Wire2")
 port_id = 2
 port_name = "Input 2"
 
-[node name="Output1IOPort" parent="." index="15" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("5_jstkx")]
+[node name="Output1IOPort" parent="." index="15" node_paths=PackedStringArray("wires") instance=ExtResource("5_jstkx")]
 position = Vector2(300, 0)
 wires = [NodePath("../Wire6")]
-wire = NodePath("../Wire6")
 is_output = true
 port_name = "Output 1"
 

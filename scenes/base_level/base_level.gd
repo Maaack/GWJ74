@@ -30,14 +30,13 @@ func _update_inputs():
 	var _current_input = int(input_iter)
 	var _wire_iter := 0
 	for input_port in input_ports:
-		var input_wire = input_port.wire
 		var bit_mask : int = pow(2, _wire_iter)
 		#print("input %d wire iter %d bitmask %d and %d" % [_current_input, _wire_iter, bit_mask, bit_mask & _current_input])
 		var wire_charged : bool = (bit_mask & _current_input) > 0
 		if wire_charged:
-			input_wire.charge = 1.0
+			input_port.charge_wires(1.0)
 		else:
-			input_wire.charge = 0.0
+			input_port.charge_wires(0.0)
 		_wire_iter += 1
 
 func update_progress():
@@ -69,7 +68,7 @@ func _get_current_output():
 	var _current_output : int = 0
 	var _wire_iter := 0
 	for output_port in output_ports:
-		var output_wire = output_port.wire
+		var output_wire = output_port.wires[0]
 		var bit_value := pow(2, _wire_iter)
 		if round(output_wire.charge) > 0:
 			_current_output += bit_value

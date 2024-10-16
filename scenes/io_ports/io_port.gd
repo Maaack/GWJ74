@@ -5,13 +5,7 @@ extends Node2D
 @export var wires : Array[Wire] :
 	set(value):
 		wires = value
-		_update_wire()
-
-@export var wire : Wire :
-	set(value):
-		wire = value
-		_update_wire()
-		wires.append(wire)
+		_update_wires()
 
 @export var is_output : bool = false:
 	set(value):
@@ -19,7 +13,7 @@ extends Node2D
 		is_output = value
 		if _value_changed:
 			$Computing.position.x = -$Computing.position.x
-			_update_wire()
+			_update_wires()
 			_generate_port_name()
 
 @export var port_id : int = 1 :
@@ -41,8 +35,9 @@ func _generate_port_name():
 	_port_name += "%d" % port_id
 	port_name = _port_name
 
-func _update_wire():
-	if wire is Wire:
+func _update_wires():
+	for wire in wires:
+		if wire is not Wire: continue
 		if is_output:
 			wire.end_global_position = get_io_global_position()
 		else:
@@ -58,6 +53,6 @@ func update():
 func get_io_global_position() -> Vector2:
 	return %WireConnection.global_position
 
-func _ready():
-	wires.clear()
-	wire = wire
+func charge_wires(charge : float = 0.0):
+	for wire in wires:
+		wire.charge = charge

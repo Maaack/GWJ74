@@ -69,16 +69,14 @@ input_1_wire = NodePath("../Wire6")
 output_1_wire = NodePath("../Wire5")
 inserted_gate = NodePath("../NotLogicGate3")
 
-[node name="Input1IOPort" parent="." index="11" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("10_rc4kj")]
+[node name="Input1IOPort" parent="." index="11" node_paths=PackedStringArray("wires") instance=ExtResource("10_rc4kj")]
 position = Vector2(-400, 0)
 wires = [NodePath("../Wire")]
-wire = NodePath("../Wire")
 port_name = "Input 1"
 
-[node name="Output1IOPort" parent="." index="12" node_paths=PackedStringArray("wires", "wire") instance=ExtResource("10_rc4kj")]
+[node name="Output1IOPort" parent="." index="12" node_paths=PackedStringArray("wires") instance=ExtResource("10_rc4kj")]
 position = Vector2(400, 0)
 wires = [NodePath("../Wire7")]
-wire = NodePath("../Wire7")
 is_output = true
 port_name = "Output 1"
 
