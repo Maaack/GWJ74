@@ -8,10 +8,8 @@ script = ExtResource("2_2gsva")
 attribution_file_path = "res://ATTRIBUTION.md"
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
-text = "[center][font_size=48]Collaborators[/font_size]
-
-[font_size=32]Game By[/font_size]
-Maaack
+text = "[center][font_size=48]Game By[/font_size]
+[url=https://maaack.itch.io/]Maaack[/url]
 
 [font_size=48]Sourced[/font_size]
 [font_size=32]Music[/font_size]

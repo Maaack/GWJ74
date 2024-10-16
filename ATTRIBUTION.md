@@ -1,8 +1,6 @@
 # Attribution
-## Collaborators
-
-### Game By
-Maaack
+## Game By
+[Maaack](https://maaack.itch.io/)
 
 ## Sourced
 ### Music
