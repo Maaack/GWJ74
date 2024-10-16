@@ -14,6 +14,11 @@ func _update_camera_zoom():
 	var tween = create_tween()
 	tween.tween_property(self, "zoom", target_zoom, zoom_blend_time)
 
+func _clamp_target_position():
+	var _camera_area : Vector2 = camera_area * zoom
+	target_position.y = clamp(target_position.y, -_camera_area.y/2, _camera_area.y/2)
+	target_position.x = clamp(target_position.x, -_camera_area.x/2, _camera_area.x/2)
+
 func _unhandled_input(event):
 	if event.is_action_pressed(&"zoom_in"):
 		target_zoom += Vector2(zoom_step_size, zoom_step_size)
@@ -32,11 +37,11 @@ func _unhandled_input(event):
 			if event.has_method(&"get_position"):
 				var _viewport_half_size = get_viewport_rect().size / 2
 				target_position = global_position - (_viewport_half_size - event.position)
+				_clamp_target_position()
 				var tween = create_tween()
 				tween.tween_property(self, "position", target_position, 0.1)
 			target_zoom = Vector2.ONE
 			_update_camera_zoom()
-	
 	if event.is_action_pressed(&"grab_focus"):
 		_dragging_focus = true
 	elif event.is_action_released(&"grab_focus"):
@@ -44,6 +49,7 @@ func _unhandled_input(event):
 	if _dragging_focus and event is InputEventMouseMotion:
 		var drag_motion = -(event.relative / zoom)
 		target_position += drag_motion
+		_clamp_target_position()
 		position = target_position
 	
 	
