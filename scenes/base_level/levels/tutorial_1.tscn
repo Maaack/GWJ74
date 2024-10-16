@@ -21,8 +21,8 @@ camera_area = Vector2(1500, 400)
 
 [node name="Wire" parent="." index="1" instance=ExtResource("8_n4cj7")]
 position = Vector2(638, 184)
-points = PackedVector2Array(-132, -184, -42, -184)
-start_position = Vector2(-132, -184)
+points = PackedVector2Array(-638, -184, -42, -184)
+start_position = Vector2(-638, -184)
 end_position = Vector2(-42, -184)
 
 [node name="Wire4" parent="." index="2" instance=ExtResource("8_n4cj7")]
@@ -55,7 +55,6 @@ output_1_wire = NodePath("../Wire3")
 position = Vector2(756, -154)
 
 [node name="Input1IOPort" parent="." index="8" node_paths=PackedStringArray("wire") instance=ExtResource("10_1qy2o")]
-position = Vector2(506, 0)
 wire = NodePath("../Wire")
 port_name = "Input 1"
 
@@ -77,35 +76,24 @@ output_wire = NodePath("../Wire6")
 
 [node name="Label" type="Label" parent="." index="12"]
 offset_left = 165.0
-offset_top = 144.0
+offset_top = 90.0
 offset_right = 441.0
-offset_bottom = 193.0
-text = "Middle click to drag, or double click.
-Pan the camera to the right -->"
+offset_bottom = 139.0
+text = "Right or middle click to grab focus,
+Drag the camera to the right -->"
 horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="." index="13"]
-offset_left = 131.0
+offset_left = -429.0
 offset_top = -13.0
-offset_right = 432.0
-offset_bottom = 10.0
-text = "Input and output nodes are marked -->"
+offset_right = -73.0
+offset_bottom = 74.0
+text = "Input and output nodes are marked -->
+
+Inputs alternate between 0 and 1. "
 horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="." index="14"]
-offset_left = -427.0
-offset_top = -80.0
-offset_right = 28.0
-offset_bottom = 47.0
-text = "You must get the circuits to pass their corresponding tests.
-
-Inputs on each wire will be either 0 or 1. 
-Actual outputs are compared to expected outputs.
-Consecutive matches result in increasing the test progress.
-"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="." index="15"]
+[node name="Label4" type="Label" parent="." index="14"]
 offset_left = -1163.0
 offset_top = -80.0
 offset_right = -887.0
@@ -114,15 +102,19 @@ text = "There's nothing here to worry about.
 Check back to the right -->"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="." index="16"]
-offset_left = 157.0
+[node name="Label3" type="Label" parent="." index="15"]
+offset_left = -452.0
 offset_top = -254.0
-offset_right = 475.0
-offset_bottom = -231.0
-text = "Testing progress is measured here -->"
+offset_right = 453.0
+offset_bottom = -153.0
+text = "You must get the circuits to pass their corresponding tests.                                      Testing progress is measured here -->
+
+Actual outputs are compared to expected outputs.
+Consecutive matches result in increasing the test progress.
+"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="." index="17"]
+[node name="Label2" type="Label" parent="." index="16"]
 offset_left = 824.0
 offset_top = -180.0
 offset_right = 1159.0
@@ -131,5 +123,5 @@ text = "<-- Drag the gate from the socket to the left
 to the socket below."
 horizontal_alignment = 1
 
-[node name="NotLogicGate" parent="." index="18" instance=ExtResource("5_2t7nx")]
+[node name="NotLogicGate" parent="." index="17" instance=ExtResource("5_2t7nx")]
 position = Vector2(756, -154)

@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=3 uid="uid://dadqhi11dfs00"]
+
+[ext_resource type="PackedScene" uid="uid://bjlxayc5mxtjo" path="res://scenes/base_level/base_level.tscn" id="1_lscm0"]
+[ext_resource type="PackedScene" uid="uid://cvriurvuudiom" path="res://scenes/wires/wire.tscn" id="2_q8ip0"]
+[ext_resource type="PackedScene" uid="uid://c5dquppa40dh4" path="res://scenes/sockets/socket.tscn" id="3_gspuh"]
+[ext_resource type="PackedScene" uid="uid://b73alytko4pev" path="res://scenes/sockets/socket_2i_1o.tscn" id="4_tguu0"]
+[ext_resource type="PackedScene" uid="uid://bb16q1exnh000" path="res://scenes/io_ports/io_port.tscn" id="5_ubjl0"]
+[ext_resource type="PackedScene" uid="uid://ct84uikyra0ks" path="res://scenes/electronics/led.tscn" id="6_dov2y"]
+[ext_resource type="PackedScene" uid="uid://dp20aewto6ku6" path="res://scenes/gates/or_logic_gate.tscn" id="7_ak14v"]
+
+[node name="Tutorial4" node_paths=PackedStringArray("input_ports", "output_ports") instance=ExtResource("1_lscm0")]
+input_ports = [NodePath("Input1IOPort"), NodePath("Input2IOPort")]
+output_ports = [NodePath("Output1IOPort")]
+expected_outputs = Array[int]([0, 1, 1, 1])
+matches_required = 8
+
+[node name="UpdateTimer" parent="." index="1"]
+wait_time = 0.5
+
+[node name="Wire" parent="." index="2" instance=ExtResource("2_q8ip0")]
+position = Vector2(-168, 184)
+points = PackedVector2Array(-132, -288, -42, -288)
+start_position = Vector2(-132, -288)
+end_position = Vector2(-42, -288)
+
+[node name="Wire4" parent="." index="3" instance=ExtResource("2_q8ip0")]
+position = Vector2(-270, 169)
+points = PackedVector2Array(80, -273, 188, -184)
+start_position = Vector2(80, -273)
+end_position = Vector2(188, -184)
+
+[node name="Wire2" parent="." index="4" instance=ExtResource("2_q8ip0")]
+position = Vector2(-168, 184)
+points = PackedVector2Array(-132, -80, -42, -80)
+start_position = Vector2(-132, -80)
+end_position = Vector2(-42, -80)
+
+[node name="Wire8" parent="." index="5" instance=ExtResource("2_q8ip0")]
+position = Vector2(-270, 169)
+points = PackedVector2Array(80, -65, 188, -154)
+start_position = Vector2(80, -65)
+end_position = Vector2(188, -154)
+
+[node name="Wire3" parent="." index="6" instance=ExtResource("2_q8ip0")]
+position = Vector2(135, 0)
+points = PackedVector2Array(-53, 0, 55, 0)
+start_position = Vector2(-53, 0)
+end_position = Vector2(55, 0)
+
+[node name="Wire6" parent="." index="7" instance=ExtResource("2_q8ip0")]
+position = Vector2(161, 0)
+points = PackedVector2Array(49, 0, 139, 0)
+start_position = Vector2(49, 0)
+end_position = Vector2(139, 0)
+
+[node name="Socket" parent="." index="8" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("3_gspuh")]
+position = Vector2(0, -170)
+inserted_gate = NodePath("../OrLogicGate")
+
+[node name="Socket2" parent="." index="9" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("3_gspuh")]
+position = Vector2(0, 170)
+inserted_gate = NodePath("../OrLogicGate3")
+
+[node name="Socket3" parent="." index="10" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("3_gspuh")]
+position = Vector2(150, -170)
+inserted_gate = NodePath("../OrLogicGate4")
+
+[node name="Socket4" parent="." index="11" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("3_gspuh")]
+position = Vector2(150, 170)
+inserted_gate = NodePath("../OrLogicGate5")
+
+[node name="Socket2I1O" parent="." index="12" node_paths=PackedStringArray("input_2_wire", "input_1_wire", "output_1_wire", "inserted_gate") instance=ExtResource("4_tguu0")]
+input_2_wire = NodePath("../Wire8")
+input_1_wire = NodePath("../Wire4")
+output_1_wire = NodePath("../Wire3")
+inserted_gate = NodePath("../OrLogicGate2")
+
+[node name="Input1IOPort" parent="." index="13" node_paths=PackedStringArray("wire") instance=ExtResource("5_ubjl0")]
+position = Vector2(-300, -104)
+wire = NodePath("../Wire")
+port_name = "Input 1"
+
+[node name="Input2IOPort" parent="." index="14" node_paths=PackedStringArray("wire") instance=ExtResource("5_ubjl0")]
+position = Vector2(-300, 104)
+wire = NodePath("../Wire2")
+port_id = 2
+port_name = "Input 2"
+
+[node name="Output1IOPort" parent="." index="15" node_paths=PackedStringArray("wire") instance=ExtResource("5_ubjl0")]
+position = Vector2(300, 0)
+wire = NodePath("../Wire6")
+is_output = true
+port_name = "Output 1"
+
+[node name="LED" parent="." index="16" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("6_dov2y")]
+position = Vector2(-200, -141)
+input_wire = NodePath("../Wire")
+output_wire = NodePath("../Wire4")
+
+[node name="LED2" parent="." index="17" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("6_dov2y")]
+position = Vector2(-200, 67)
+input_wire = NodePath("../Wire2")
+output_wire = NodePath("../Wire8")
+
+[node name="LED3" parent="." index="18" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("6_dov2y")]
+position = Vector2(200, -37)
+input_wire = NodePath("../Wire3")
+output_wire = NodePath("../Wire6")
+
+[node name="Label" type="Label" parent="." index="19"]
+offset_left = -482.0
+offset_top = -26.0
+offset_right = -206.0
+offset_bottom = 23.0
+text = "Inputs will alternate between
+all combinations of 0 and 1"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." index="20"]
+offset_left = 214.0
+offset_top = -195.0
+offset_right = 490.0
+offset_bottom = -146.0
+text = "These are all OR gates,
+though many are haunted."
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." index="21"]
+offset_left = 214.0
+offset_top = 147.0
+offset_right = 490.0
+offset_bottom = 196.0
+text = "OR gates should output 1,
+when EITHER inputs are 1."
+horizontal_alignment = 1
+
+[node name="OrLogicGate" parent="." index="22" instance=ExtResource("7_ak14v")]
+position = Vector2(0, -170)
+haunted_inputs = Array[int]([3])
+
+[node name="OrLogicGate2" parent="." index="23" instance=ExtResource("7_ak14v")]
+haunted_inputs = Array[int]([2, 3])
+
+[node name="OrLogicGate3" parent="." index="24" instance=ExtResource("7_ak14v")]
+position = Vector2(0, 170)
+haunted_inputs = Array[int]([1])
+
+[node name="OrLogicGate4" parent="." index="25" instance=ExtResource("7_ak14v")]
+position = Vector2(150, -170)
+
+[node name="OrLogicGate5" parent="." index="26" instance=ExtResource("7_ak14v")]
+position = Vector2(150, 170)
+haunted_inputs = Array[int]([2])
