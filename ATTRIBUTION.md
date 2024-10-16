@@ -1,18 +1,15 @@
 # Attribution
 ## Collaborators
 
-### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+### Game By
+Maaack
 
-
-## Sourced / Unaffiliated
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
+## Sourced
+### Music
+#### Background Music
+Author: [UNIVERSFIELD](https://pixabay.com/users/universfield-28281460/)  
+Source: [pixabay.com](https://pixabay.com/music/ambient-horror-background-atmosphere-15-246917/)  
+License: [Custom Open License](https://pixabay.com/service/license-summary/)
 
 ### Godot Wild Jam Logos
 Author: [Dawk](https://coreyaroberts.com/)  
