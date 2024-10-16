@@ -50,5 +50,4 @@ func update():
 	pass
 
 func get_io_global_position() -> Vector2:
-	print(%WireConnection.global_position)
 	return %WireConnection.global_position
