@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddun0ho0p3h0p"]
+[gd_scene load_steps=6 format=3 uid="uid://ddun0ho0p3h0p"]
 
 [ext_resource type="Script" path="res://scenes/base_level/levels/game_intro.gd" id="1_oofn5"]
+[ext_resource type="FontFile" uid="uid://idyk6slk84fp" path="res://assets/fonts/HomeVideo-Regular.otf" id="2_1opmk"]
 
 [sub_resource type="Animation" id="Animation_20wtw"]
 length = 0.001
@@ -19,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ru1n7"]
 resource_name = "START"
-length = 18.0
+length = 20.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -28,10 +29,10 @@ tracks/0/path = NodePath("CenterContainer/ScrollContainer:scroll_vertical")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 16),
+"times": PackedFloat32Array(0, 17),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0, 991]
+"values": [0, 1166]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -40,7 +41,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(18),
+"times": PackedFloat32Array(20),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -72,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(800, 400)
 layout_mode = 2
 mouse_filter = 2
 horizontal_scroll_mode = 0
@@ -95,6 +96,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_1opmk")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]In the year 2XXX, the Apocalyptic War
 
@@ -102,9 +105,11 @@ caused the dead to outnumber the living.
 
 For the first time in a long time,
 
-humanity hid their faces in the dirt...
+humanity hid their faces in the dirt,
 
 while ghosts and ghouls...
+
+
 
 freely roamed the surface of the earth.
 
@@ -118,6 +123,8 @@ even people, to their grotesque will.
 
 Eventually, only the rodents succumbed.
 
+
+
 Today, the influence of those ancient ghosts
 
 is even more minor, but still present here.
@@ -130,7 +137,13 @@ You'll have to contend with...
 
 
 
-[wave amp=50.0 freq=5.0 connected=1]Haunted Circuits!!![/wave][/center]"
+
+
+
+[wave amp=50.0 freq=5.0 connected=1]Haunted Circuits!!![/wave][/center]
+
+
+"
 fit_content = true
 scroll_active = false
 
