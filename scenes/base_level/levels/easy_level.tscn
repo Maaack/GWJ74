@@ -20,6 +20,7 @@ matches_required = 16
 
 [node name="GateTester" parent="." index="1" instance=ExtResource("4_gqu61")]
 position = Vector2(-182, 183)
+metadata/_edit_horizontal_guides_ = [-15.0, 15.0, 0.0]
 
 [node name="AndLogicGate" parent="." index="2" instance=ExtResource("4_c4owr")]
 position = Vector2(-397, -232)

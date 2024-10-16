@@ -14,6 +14,10 @@ output_ports = [NodePath("Output1IOPort")]
 expected_outputs = Array[int]([0, 0, 0, 1])
 matches_required = 8
 
+[node name="LevelCamera" parent="." index="0"]
+min_zoom = 1.0
+camera_area = Vector2(100, 100)
+
 [node name="UpdateTimer" parent="." index="1"]
 wait_time = 0.5
 
@@ -126,28 +130,31 @@ haunted_inputs = Array[int]([2])
 position = Vector2(150, 170)
 
 [node name="Label" type="Label" parent="." index="24"]
-offset_left = -482.0
-offset_top = -26.0
-offset_right = -206.0
-offset_bottom = 23.0
+offset_left = -458.0
+offset_top = -42.0
+offset_right = -164.0
+offset_bottom = 7.0
+theme_type_variation = &"HintLabel"
 text = "Most gates will take 2 inputs
 and combine them logically."
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="." index="25"]
-offset_left = 214.0
-offset_top = -195.0
-offset_right = 490.0
-offset_bottom = -146.0
+offset_left = -64.0
+offset_top = -287.0
+offset_right = 212.0
+offset_bottom = -238.0
+theme_type_variation = &"HintLabel"
 text = "These are all AND gates,
 though many are haunted."
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="." index="26"]
-offset_left = 214.0
-offset_top = 147.0
-offset_right = 490.0
-offset_bottom = 196.0
+offset_left = 72.0
+offset_top = 51.0
+offset_right = 348.0
+offset_bottom = 100.0
+theme_type_variation = &"HintLabel"
 text = "AND gates should output 1,
 when BOTH inputs are 1."
 horizontal_alignment = 1

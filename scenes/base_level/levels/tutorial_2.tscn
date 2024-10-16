@@ -106,10 +106,29 @@ position = Vector2(150, 0)
 haunted_inputs = Array[int]([1])
 
 [node name="Label" type="Label" parent="." index="19"]
-offset_left = -138.0
-offset_top = 143.0
-offset_right = 138.0
-offset_bottom = 192.0
-text = "Some gates are haunted by
-GHOSTS!"
+offset_left = -159.0
+offset_top = 131.0
+offset_right = 163.0
+offset_bottom = 197.0
+theme_type_variation = &"HintLabel"
+text = "One of these gates is haunted...
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." index="20"]
+offset_left = -159.0
+offset_top = 171.0
+offset_right = 163.0
+offset_bottom = 199.0
+theme_type_variation = &"ScareLabel"
+text = "by GHOSTS!"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." index="21"]
+offset_left = -1050.0
+offset_top = -842.0
+offset_right = -760.0
+offset_bottom = -806.0
+theme_type_variation = &"ScareLabel"
+text = "Nothing to find."
 horizontal_alignment = 1

@@ -7,32 +7,36 @@
 script = ExtResource("1_0tvmm")
 test_delay = 0.5
 repeat_delay = 1.0
-metadata/_edit_horizontal_guides_ = [-15.0, 15.0, 0.0]
+metadata/_edit_horizontal_guides_ = [-15.0, 15.0, 0.0, 59.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -117.0
+offset_left = -99.0
 offset_top = -73.0
-offset_right = 465.0
-offset_bottom = 71.0
+offset_right = 522.0
+offset_bottom = 81.0
 mouse_filter = 2
 color = Color(0.129558, 0.129558, 0.129558, 1)
 
-[node name="PowerButton" type="CheckButton" parent="ColorRect"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 115.0
-offset_right = 105.0
-offset_bottom = 146.0
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 225.0
+grow_vertical = 0
+alignment = 1
+
+[node name="PowerButton" type="CheckButton" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
 button_pressed = true
 text = "Off/On"
 
-[node name="RepeatButton" type="CheckButton" parent="ColorRect"]
-layout_mode = 0
-offset_left = 103.0
-offset_top = 115.0
-offset_right = 206.0
-offset_bottom = 146.0
-text = "Repeat"
+[node name="RepeatButton" type="CheckButton" parent="ColorRect/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Loop"
 
 [node name="Panel" type="Panel" parent="ColorRect"]
 custom_minimum_size = Vector2(360, 120)
@@ -42,10 +46,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = -59.0
-offset_right = 275.0
-offset_bottom = 61.0
+offset_left = -84.5
+offset_top = -62.0
+offset_right = 291.5
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -346,16 +350,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect"]
-layout_mode = 0
-offset_left = 55.0
-offset_top = 2.0
-offset_right = 184.0
-offset_bottom = 25.0
+layout_mode = 1
+offset_right = 223.0
+offset_bottom = 26.0
 text = "2I1O Gate Tester"
+horizontal_alignment = 1
 
 [node name="Socket2I1O" parent="." instance=ExtResource("2_4upxj")]
 unique_name_in_owner = true
 
-[connection signal="toggled" from="ColorRect/PowerButton" to="." method="_on_power_button_toggled"]
-[connection signal="toggled" from="ColorRect/RepeatButton" to="." method="_on_repeat_button_toggled"]
+[connection signal="toggled" from="ColorRect/HBoxContainer/PowerButton" to="." method="_on_power_button_toggled"]
+[connection signal="toggled" from="ColorRect/HBoxContainer/RepeatButton" to="." method="_on_repeat_button_toggled"]
 [connection signal="gate_inserted" from="Socket2I1O" to="." method="_on_socket_2i_1o_gate_inserted"]

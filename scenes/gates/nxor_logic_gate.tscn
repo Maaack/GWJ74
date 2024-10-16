@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ysqb6ba7yrp8" path="res://scenes/gates/logic_gate.tscn" id="1_ll226"]
 [ext_resource type="Script" path="res://scenes/gates/nxor_logic_gate.gd" id="2_sdnh2"]
-[ext_resource type="Texture2D" uid="uid://dkit5trv23saf" path="res://assets/images/logic-gate-xor.png" id="3_534ng"]
+[ext_resource type="Texture2D" uid="uid://cnl5pjb8bkdx3" path="res://assets/images/logic-gate-nxor.png" id="3_yxm5q"]
 
 [node name="NXOrLogicGate" instance=ExtResource("1_ll226")]
 script = ExtResource("2_sdnh2")
@@ -11,7 +11,7 @@ haunting_pattern = Array[int]([])
 gate_name = "NXOR"
 
 [node name="ShadowSprite2D" parent="." index="0"]
-texture = ExtResource("3_534ng")
+texture = ExtResource("3_yxm5q")
 
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("3_534ng")
+texture = ExtResource("3_yxm5q")

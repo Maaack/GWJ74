@@ -21,14 +21,14 @@ camera_area = Vector2(1500, 400)
 
 [node name="Wire" parent="." index="1" instance=ExtResource("8_n4cj7")]
 position = Vector2(638, 184)
-points = PackedVector2Array(-638, -184, -42, -184)
+points = PackedVector2Array(-638, -184, -242, -184)
 start_position = Vector2(-638, -184)
-end_position = Vector2(-42, -184)
+end_position = Vector2(-242, -184)
 
 [node name="Wire4" parent="." index="2" instance=ExtResource("8_n4cj7")]
 position = Vector2(638, 169)
-points = PackedVector2Array(-22, -169, 36, -169)
-start_position = Vector2(-22, -169)
+points = PackedVector2Array(-222, -169, 36, -169)
+start_position = Vector2(-222, -169)
 end_position = Vector2(36, -169)
 
 [node name="Wire3" parent="." index="3" instance=ExtResource("8_n4cj7")]
@@ -101,7 +101,7 @@ offset_left = -1163.0
 offset_top = -80.0
 offset_right = -887.0
 offset_bottom = -31.0
-theme_type_variation = &"HintLabel"
+theme_type_variation = &"ScareLabel"
 text = "There's nothing here to worry about.
 Check back to the right -->"
 horizontal_alignment = 1
@@ -114,6 +114,8 @@ offset_bottom = -172.0
 theme_type_variation = &"HintLabel"
 text = "You must get the circuits to pass their corresponding tests.
 Testing progress is measured here -->
+
+
 
 Actual outputs are compared to expected outputs.
 Consecutive matches result in increasing the test progress.

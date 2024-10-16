@@ -1,9 +1,14 @@
+@tool
 class_name Gate2I1OTester
 extends Node2D
 
 @export var test_delay : float = 0.25
 @export var reads_gate_type : bool = false
 @export var repeat_delay : float = 0.5
+@export var show_repeat_button : bool = false :
+	set(value):
+		show_repeat_button = value
+		%RepeatButton.visible = show_repeat_button
 
 @onready var gate_type_label : Label = %GateTypeLabel
 @onready var output_00_label : Label = %Output00Label
