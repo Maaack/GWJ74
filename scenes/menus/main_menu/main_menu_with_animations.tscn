@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgy0udm6d7qqw"]
+[gd_scene load_steps=24 format=3 uid="uid://dgy0udm6d7qqw"]
 
 [ext_resource type="PackedScene" uid="uid://k0xiieoabc76" path="res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_hl7wc"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_leyy8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/maaacks_game_template/base/scripts/ui_sound_controller.gd" id="4_isc2u"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="5_8d7fw"]
 [ext_resource type="Script" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/config_version_label.gd" id="6_bpigk"]
+[ext_resource type="AudioStream" uid="uid://cc4aqiu4wiqlt" path="res://assets/music/horror-background-atmosphere-15-246917.mp3" id="6_e30q6"]
 [ext_resource type="FontFile" uid="uid://idyk6slk84fp" path="res://assets/fonts/HomeVideo-Regular.otf" id="7_obv5f"]
 [ext_resource type="Script" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/config_name_label.gd" id="8_omq8s"]
 [ext_resource type="Script" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="9_ak3dj"]
@@ -380,6 +381,7 @@ anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("5_8d7fw")]
+stream = ExtResource("6_e30q6")
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 layout_mode = 1

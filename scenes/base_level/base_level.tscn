@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjlxayc5mxtjo"]
+[gd_scene load_steps=5 format=3 uid="uid://bjlxayc5mxtjo"]
 
 [ext_resource type="Script" path="res://scenes/base_level/base_level.gd" id="1_7im4o"]
 [ext_resource type="PackedScene" uid="uid://dvyljjp8jjudo" path="res://scenes/base_level/level_camera.tscn" id="2_jyndy"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="3_222i2"]
+[ext_resource type="AudioStream" uid="uid://dnvmtqeqermqr" path="res://assets/music/gloomy-depths-246916.mp3" id="4_qcfs6"]
 
 [node name="BaseLevel" type="Node2D"]
 texture_filter = 1
@@ -10,5 +12,10 @@ script = ExtResource("1_7im4o")
 [node name="LevelCamera" parent="." instance=ExtResource("2_jyndy")]
 
 [node name="UpdateTimer" type="Timer" parent="."]
+
+[node name="BackgroundMusicPlayer" parent="." instance=ExtResource("3_222i2")]
+stream = ExtResource("4_qcfs6")
+volume_db = -20.0
+parameters/looping = true
 
 [connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]

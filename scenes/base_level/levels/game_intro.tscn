@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddun0ho0p3h0p"]
+[gd_scene load_steps=8 format=3 uid="uid://ddun0ho0p3h0p"]
 
 [ext_resource type="Script" path="res://scenes/base_level/levels/game_intro.gd" id="1_oofn5"]
 [ext_resource type="FontFile" uid="uid://idyk6slk84fp" path="res://assets/fonts/HomeVideo-Regular.otf" id="2_1opmk"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="3_fds8n"]
+[ext_resource type="AudioStream" uid="uid://dux0dh352ay7g" path="res://assets/music/a-piano-with-a-creepy-atmosphere-for-scary-stories-161660.mp3" id="4_jybcg"]
 
 [sub_resource type="Animation" id="Animation_20wtw"]
 length = 0.001
@@ -192,3 +194,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 wait_time = 0.25
 one_shot = true
+
+[node name="BackgroundMusicPlayer" parent="." instance=ExtResource("3_fds8n")]
+stream = ExtResource("4_jybcg")
+volume_db = -10.0
