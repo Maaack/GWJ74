@@ -5,15 +5,12 @@ extends Node2D
 signal output_checked(input: int, output: int)
 signal progress_updated(progress: float)
 
-const MATCH_REQUIREMENT_MOD = 4
-
 @export var input_ports : Array[IOPort] :
 	set(value):
 		input_ports = value
 		if not input_ports.is_empty():
 			input_range = pow(2, input_ports.size())
 			expected_outputs.resize(input_range)
-			matches_required = int(input_range * MATCH_REQUIREMENT_MOD)
 
 @export var output_ports : Array[IOPort]
 @export var expected_outputs : Array[int] = []

@@ -34,9 +34,9 @@ position = Vector2(-397, -6)
 [node name="NandLogicGate" parent="." index="5" instance=ExtResource("7_641fq")]
 position = Vector2(-397, 111)
 
-[node name="Socket2I1O" parent="." index="6" node_paths=PackedStringArray("input_1_wire", "input_2_wire", "output_1_wire") instance=ExtResource("7_fhlk3")]
-input_1_wire = NodePath("../Wire4")
+[node name="Socket2I1O" parent="." index="6" node_paths=PackedStringArray("input_2_wire", "input_1_wire", "output_1_wire") instance=ExtResource("7_fhlk3")]
 input_2_wire = NodePath("../Wire5")
+input_1_wire = NodePath("../Wire4")
 output_1_wire = NodePath("../Wire3")
 
 [node name="Wire" parent="." index="7" instance=ExtResource("8_uchpd")]

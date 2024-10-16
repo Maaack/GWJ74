@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ban2om1gkd7fn"]
+
+[ext_resource type="PackedScene" uid="uid://c5dquppa40dh4" path="res://scenes/sockets/socket.tscn" id="1_h54av"]
+[ext_resource type="Script" path="res://scenes/sockets/socket_1i_1o.gd" id="2_kbwjv"]
+
+[node name="Socket1I1O" instance=ExtResource("1_h54av")]
+script = ExtResource("2_kbwjv")
+
+[node name="Input1Line2D" type="Line2D" parent="." index="2"]
+position = Vector2(0, 15)
+points = PackedVector2Array(-82, -15, -42, -15)
+width = 4.0
+
+[node name="Output1Line2D" type="Line2D" parent="." index="3"]
+points = PackedVector2Array(42, 0, 82, 0)
+width = 4.0

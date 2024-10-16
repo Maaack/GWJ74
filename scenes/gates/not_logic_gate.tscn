@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjl1m3sfbu25q"]
+
+[ext_resource type="PackedScene" uid="uid://ysqb6ba7yrp8" path="res://scenes/gates/logic_gate.tscn" id="1_02h0f"]
+[ext_resource type="Script" path="res://scenes/gates/not_logic_gate.gd" id="2_5agvq"]
+[ext_resource type="Texture2D" uid="uid://hyimgf6q4ebx" path="res://assets/images/logic-gate-not.png" id="2_bm4cn"]
+
+[node name="NotLogicGate" instance=ExtResource("1_02h0f")]
+script = ExtResource("2_5agvq")
+haunted_inputs = Array[int]([])
+haunting_pattern = Array[int]([])
+
+[node name="ShadowSprite2D" parent="." index="0"]
+texture = ExtResource("2_bm4cn")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_bm4cn")

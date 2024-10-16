@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk4jccv8l7i61"]
+
+[ext_resource type="PackedScene" uid="uid://bjlxayc5mxtjo" path="res://scenes/base_level/base_level.tscn" id="1_hew66"]
+[ext_resource type="PackedScene" uid="uid://ban2om1gkd7fn" path="res://scenes/sockets/socket_1i_1o.tscn" id="3_selhk"]
+[ext_resource type="PackedScene" uid="uid://cjl1m3sfbu25q" path="res://scenes/gates/not_logic_gate.tscn" id="5_2t7nx"]
+[ext_resource type="PackedScene" uid="uid://cvriurvuudiom" path="res://scenes/wires/wire.tscn" id="8_n4cj7"]
+[ext_resource type="PackedScene" uid="uid://c5dquppa40dh4" path="res://scenes/sockets/socket.tscn" id="9_7w8bh"]
+[ext_resource type="PackedScene" uid="uid://bb16q1exnh000" path="res://scenes/io_ports/io_port.tscn" id="10_1qy2o"]
+[ext_resource type="PackedScene" uid="uid://ct84uikyra0ks" path="res://scenes/electronics/led.tscn" id="11_k2e02"]
+
+[node name="Tutorial1" node_paths=PackedStringArray("input_ports", "output_ports") instance=ExtResource("1_hew66")]
+input_ports = [NodePath("Input1IOPort")]
+output_ports = [NodePath("Output1IOPort")]
+expected_outputs = Array[int]([1, 0])
+matches_required = 6
+metadata/_edit_horizontal_guides_ = [-199.0, -112.0]
+metadata/_edit_vertical_guides_ = [770.0]
+
+[node name="LevelCamera" parent="." index="0"]
+camera_area = Vector2(1500, 400)
+
+[node name="Wire" parent="." index="1" instance=ExtResource("8_n4cj7")]
+position = Vector2(638, 184)
+points = PackedVector2Array(-132, -184, -42, -184)
+start_position = Vector2(-132, -184)
+end_position = Vector2(-42, -184)
+
+[node name="Wire4" parent="." index="2" instance=ExtResource("8_n4cj7")]
+position = Vector2(638, 169)
+points = PackedVector2Array(-22, -169, 36, -169)
+start_position = Vector2(-22, -169)
+end_position = Vector2(36, -169)
+
+[node name="Wire3" parent="." index="3" instance=ExtResource("8_n4cj7")]
+position = Vector2(897, 0)
+points = PackedVector2Array(-59, 0, -1, 0)
+start_position = Vector2(-59, 0)
+end_position = Vector2(-1, 0)
+
+[node name="Wire6" parent="." index="4" instance=ExtResource("8_n4cj7")]
+position = Vector2(873, 0)
+points = PackedVector2Array(43, 0, 133, 0)
+start_position = Vector2(43, 0)
+end_position = Vector2(133, 0)
+
+[node name="UpdateTimer" parent="." index="5"]
+wait_time = 0.5
+
+[node name="Socket1I1O" parent="." index="6" node_paths=PackedStringArray("input_1_wire", "output_1_wire") instance=ExtResource("3_selhk")]
+position = Vector2(756, 0)
+input_1_wire = NodePath("../Wire4")
+output_1_wire = NodePath("../Wire3")
+
+[node name="Socket" parent="." index="7" instance=ExtResource("9_7w8bh")]
+position = Vector2(756, -154)
+
+[node name="Input1IOPort" parent="." index="8" node_paths=PackedStringArray("wire") instance=ExtResource("10_1qy2o")]
+position = Vector2(506, 0)
+wire = NodePath("../Wire")
+port_name = "Input 1"
+
+[node name="Output1IOPort" parent="." index="9" node_paths=PackedStringArray("wire") instance=ExtResource("10_1qy2o")]
+position = Vector2(1006, 0)
+wire = NodePath("../Wire6")
+is_output = true
+port_name = "Output 1"
+
+[node name="LED" parent="." index="10" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("11_k2e02")]
+position = Vector2(606, -37)
+input_wire = NodePath("../Wire")
+output_wire = NodePath("../Wire4")
+
+[node name="LED3" parent="." index="11" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("11_k2e02")]
+position = Vector2(906, -37)
+input_wire = NodePath("../Wire3")
+output_wire = NodePath("../Wire6")
+
+[node name="Label" type="Label" parent="." index="12"]
+offset_left = 165.0
+offset_top = 144.0
+offset_right = 441.0
+offset_bottom = 193.0
+text = "Middle click to drag, or double click.
+Pan the camera to the right -->"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="." index="13"]
+offset_left = 131.0
+offset_top = -13.0
+offset_right = 432.0
+offset_bottom = 10.0
+text = "Input and output nodes are marked -->"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="." index="14"]
+offset_left = -427.0
+offset_top = -80.0
+offset_right = 28.0
+offset_bottom = 47.0
+text = "You must get the circuits to pass their corresponding tests.
+
+Inputs on each wire will be either 0 or 1. 
+Actual outputs are compared to expected outputs.
+Consecutive matches result in increasing the test progress.
+"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." index="15"]
+offset_left = -1163.0
+offset_top = -80.0
+offset_right = -887.0
+offset_bottom = -31.0
+text = "There's nothing here to worry about.
+Check back to the right -->"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." index="16"]
+offset_left = 157.0
+offset_top = -254.0
+offset_right = 475.0
+offset_bottom = -231.0
+text = "Testing progress is measured here -->"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." index="17"]
+offset_left = 824.0
+offset_top = -180.0
+offset_right = 1159.0
+offset_bottom = -131.0
+text = "<-- Drag the gate from the socket to the left
+to the socket below."
+horizontal_alignment = 1
+
+[node name="NotLogicGate" parent="." index="18" instance=ExtResource("5_2t7nx")]
+position = Vector2(756, -154)

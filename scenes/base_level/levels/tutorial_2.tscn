@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgbfaa1iuyt18"]
+
+[ext_resource type="PackedScene" uid="uid://bjlxayc5mxtjo" path="res://scenes/base_level/base_level.tscn" id="1_rjrta"]
+[ext_resource type="PackedScene" uid="uid://ban2om1gkd7fn" path="res://scenes/sockets/socket_1i_1o.tscn" id="2_fasa5"]
+[ext_resource type="PackedScene" uid="uid://cjl1m3sfbu25q" path="res://scenes/gates/not_logic_gate.tscn" id="5_2q1sn"]
+[ext_resource type="PackedScene" uid="uid://cvriurvuudiom" path="res://scenes/wires/wire.tscn" id="8_n6tuu"]
+[ext_resource type="PackedScene" uid="uid://c5dquppa40dh4" path="res://scenes/sockets/socket.tscn" id="9_5huh6"]
+[ext_resource type="PackedScene" uid="uid://bb16q1exnh000" path="res://scenes/io_ports/io_port.tscn" id="10_rc4kj"]
+[ext_resource type="PackedScene" uid="uid://ct84uikyra0ks" path="res://scenes/electronics/led.tscn" id="11_mu4y8"]
+
+[node name="Tutorial2" node_paths=PackedStringArray("input_ports", "output_ports") instance=ExtResource("1_rjrta")]
+input_ports = [NodePath("Input1IOPort")]
+output_ports = [NodePath("Output1IOPort")]
+expected_outputs = Array[int]([0, 1])
+matches_required = 8
+
+[node name="UpdateTimer" parent="." index="1"]
+wait_time = 0.5
+
+[node name="Wire" parent="." index="2" instance=ExtResource("8_n6tuu")]
+position = Vector2(-268, 184)
+points = PackedVector2Array(-132, -184, -42, -184)
+start_position = Vector2(-132, -184)
+end_position = Vector2(-42, -184)
+
+[node name="Wire4" parent="." index="3" instance=ExtResource("8_n6tuu")]
+position = Vector2(-268, 169)
+points = PackedVector2Array(-22, -169, 36, -169)
+start_position = Vector2(-22, -169)
+end_position = Vector2(36, -169)
+
+[node name="Wire3" parent="." index="4" instance=ExtResource("8_n6tuu")]
+position = Vector2(-9, 0)
+points = PackedVector2Array(-59, 0, -1, 0)
+start_position = Vector2(-59, 0)
+end_position = Vector2(-1, 0)
+
+[node name="Wire6" parent="." index="5" instance=ExtResource("8_n6tuu")]
+position = Vector2(-33, 0)
+points = PackedVector2Array(43, 0, 101, 0)
+start_position = Vector2(43, 0)
+end_position = Vector2(101, 0)
+
+[node name="Wire5" parent="." index="6" instance=ExtResource("8_n6tuu")]
+position = Vector2(279, 0)
+points = PackedVector2Array(-47, 0, 11, 0)
+start_position = Vector2(-47, 0)
+end_position = Vector2(11, 0)
+
+[node name="Wire7" parent="." index="7" instance=ExtResource("8_n6tuu")]
+position = Vector2(255, 0)
+points = PackedVector2Array(55, 0, 145, 0)
+start_position = Vector2(55, 0)
+end_position = Vector2(145, 0)
+
+[node name="Socket1I1O" parent="." index="8" node_paths=PackedStringArray("input_1_wire", "output_1_wire", "inserted_gate") instance=ExtResource("2_fasa5")]
+position = Vector2(-150, 0)
+input_1_wire = NodePath("../Wire4")
+output_1_wire = NodePath("../Wire3")
+inserted_gate = NodePath("../NotLogicGate2")
+
+[node name="Socket" parent="." index="9" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("9_5huh6")]
+position = Vector2(0, -170)
+inserted_gate = NodePath("../NotLogicGate")
+
+[node name="Socket1I1O2" parent="." index="10" node_paths=PackedStringArray("input_1_wire", "output_1_wire", "inserted_gate") instance=ExtResource("2_fasa5")]
+position = Vector2(150, 0)
+input_1_wire = NodePath("../Wire6")
+output_1_wire = NodePath("../Wire5")
+inserted_gate = NodePath("../NotLogicGate3")
+
+[node name="Input1IOPort" parent="." index="11" node_paths=PackedStringArray("wire") instance=ExtResource("10_rc4kj")]
+position = Vector2(-400, 0)
+wire = NodePath("../Wire")
+port_name = "Input 1"
+
+[node name="Output1IOPort" parent="." index="12" node_paths=PackedStringArray("wire") instance=ExtResource("10_rc4kj")]
+position = Vector2(400, 0)
+wire = NodePath("../Wire7")
+is_output = true
+port_name = "Output 1"
+
+[node name="LED" parent="." index="13" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("11_mu4y8")]
+position = Vector2(-300, -37)
+input_wire = NodePath("../Wire")
+output_wire = NodePath("../Wire4")
+
+[node name="LED3" parent="." index="14" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("11_mu4y8")]
+position = Vector2(0, -37)
+input_wire = NodePath("../Wire3")
+output_wire = NodePath("../Wire6")
+
+[node name="LED4" parent="." index="15" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("11_mu4y8")]
+position = Vector2(300, -37)
+input_wire = NodePath("../Wire5")
+output_wire = NodePath("../Wire7")
+
+[node name="NotLogicGate" parent="." index="16" instance=ExtResource("5_2q1sn")]
+position = Vector2(0, -170)
+
+[node name="NotLogicGate2" parent="." index="17" instance=ExtResource("5_2q1sn")]
+position = Vector2(-150, 0)
+
+[node name="NotLogicGate3" parent="." index="18" instance=ExtResource("5_2q1sn")]
+position = Vector2(150, 0)
+haunted_inputs = Array[int]([1])
+
+[node name="Label" type="Label" parent="." index="19"]
+offset_left = -138.0
+offset_top = 143.0
+offset_right = 138.0
+offset_bottom = 192.0
+text = "Some gates are haunted by
+GHOSTS!"
+horizontal_alignment = 1

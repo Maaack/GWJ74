@@ -23,9 +23,11 @@ var connected_socket : Socket2D
 
 func _on_area_2d_mouse_entered():
 	hovering = true
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 func _on_area_2d_mouse_exited():
 	hovering = false
+	Input.set_default_cursor_shape()
 
 func _get_nearest_socket() -> Socket2D:
 	if _nearby_sockets.is_empty() : return
