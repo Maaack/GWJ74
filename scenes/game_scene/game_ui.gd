@@ -94,6 +94,5 @@ func _on_speed_slider_value_changed(value):
 	if current_level is BaseLevel:
 		current_level.update_test_speed(value)
 
-
 func _on_mute_button_toggled(toggled_on):
 	_muted = toggled_on

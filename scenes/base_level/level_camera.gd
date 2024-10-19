@@ -51,6 +51,8 @@ func _unhandled_input(event):
 		target_position += drag_motion
 		_clamp_target_position()
 		position = target_position
-	
-	
-		
+
+func shake():
+	var _shake_level = Config.get_config(AppSettings.VIDEO_SECTION, "CameraShake", 1.0)
+	$ShakerComponent2D.intensity = _shake_level
+	$ShakerComponent2D.play_shake()

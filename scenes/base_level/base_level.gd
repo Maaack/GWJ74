@@ -86,12 +86,13 @@ func update():
 	_update_inputs()
 	_delay_check_output()
 
-func _connect_socket_signals(socket : Socket2I1O):
+func _connect_socket_signals(socket : Socket2D):
+	socket.connect(&"gate_inserted", _on_socket_gate_inserted)
 	socket.connect(&"gate_removed", _reset_progress)
 
 func _connect_sockets():
 	for child in get_children():
-		if child is Socket2I1O:
+		if child is Socket2D:
 			_connect_socket_signals(child)
 
 func _on_update_timer_timeout():
@@ -121,3 +122,6 @@ func _color_wires():
 func _ready():
 	_connect_sockets()
 	_color_wires()
+
+func _on_socket_gate_inserted(_gate):
+	$LevelCamera.shake()
