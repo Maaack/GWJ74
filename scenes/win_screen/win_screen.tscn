@@ -1,9 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://6qey5i4wyycm"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/extras/scenes/win_screen/win_screen.tscn" id="1_hkjdc"]
+[ext_resource type="PackedScene" uid="uid://dt5ses55itjy4" path="res://addons/maaacks_game_template/extras/scenes/win_screen/win_screen.tscn" id="1_hkjdc"]
 [ext_resource type="Script" path="res://scenes/win_screen/win_screen.gd" id="2_5la4k"]
 
 [node name="WinScreen" instance=ExtResource("1_hkjdc")]
 script = ExtResource("2_5la4k")
 next_scene = "res://scenes/end_credits/end_credits.tscn"
 main_menu_scene = "res://scenes/menus/main_menu/main_menu_with_animations.tscn"
+
+[node name="BackgroundColor" parent="." index="1"]
+color = Color(0, 0, 0, 0.8)
+
+[node name="MarginContainer" parent="PanelContainer" index="0"]
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ButtonsContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+theme_override_constants/separation = 16

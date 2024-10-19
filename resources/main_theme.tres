@@ -1,8 +1,20 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://de6dmltrvlbci"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://de6dmltrvlbci"]
 
 [ext_resource type="FontFile" uid="uid://cskfdl7ylv5w6" path="res://assets/fonts/micro-six/Micro-Six.otf" id="1_i16n0"]
 [ext_resource type="FontFile" uid="uid://j1hvm7qmyhg6" path="res://assets/fonts/Habbo.ttf" id="1_r05nb"]
 [ext_resource type="FontFile" uid="uid://c6qis26bb4e8b" path="res://assets/fonts/wire-one/WireOne.ttf" id="1_tvjqu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rafrm"]
+bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.400698, 0.400698, 0.400697, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [resource]
 default_font = ExtResource("1_r05nb")
@@ -10,6 +22,7 @@ default_font_size = 32
 HintLabel/base_type = &"Label"
 HintLabel/font_sizes/font_size = 16
 HintLabel/fonts/font = ExtResource("1_i16n0")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_rafrm")
 ScareLabel/base_type = &"Label"
 ScareLabel/font_sizes/font_size = 32
 ScareLabel/fonts/font = ExtResource("1_tvjqu")
