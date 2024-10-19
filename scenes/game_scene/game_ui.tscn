@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdqn5itpu6lik"]
+[gd_scene load_steps=16 format=3 uid="uid://bdqn5itpu6lik"]
 
 [ext_resource type="Script" path="res://scenes/game_scene/game_ui.gd" id="1_o8nct"]
 [ext_resource type="PackedScene" uid="uid://6qey5i4wyycm" path="res://scenes/win_screen/win_screen.tscn" id="2_jbiui"]
@@ -14,6 +14,7 @@
 [ext_resource type="Theme" uid="uid://bnhyhwsditx5o" path="res://resources/ui_theme.tres" id="11_wi57r"]
 [ext_resource type="AudioStream" uid="uid://ddbfueadnujo2" path="res://assets/sfx/bad_bing.wav" id="13_1ioki"]
 [ext_resource type="AudioStream" uid="uid://cgjt5j5a1e33y" path="res://assets/sfx/good_bing.wav" id="14_sav1d"]
+[ext_resource type="AudioStream" uid="uid://waaqwsakief6" path="res://assets/sfx/raise-up.wav" id="15_5male"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -154,6 +155,11 @@ one_shot = true
 [node name="GainedProgressTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="LevelWonStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_5male")
+volume_db = -16.0
+bus = &"SFX"
 
 [connection signal="level_load_started" from="LevelLoader" to="." method="_on_level_loader_level_load_started"]
 [connection signal="level_loaded" from="LevelLoader" to="." method="_on_level_loader_level_loaded"]

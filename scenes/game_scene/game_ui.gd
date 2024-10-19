@@ -18,6 +18,8 @@ func _on_level_skipped():
 	$LevelLoader.advance_and_load_level()
 
 func _on_level_won():
+	$LevelWonStreamPlayer.play()
+	await $LevelWonStreamPlayer.finished
 	if $LevelLoader.is_on_last_level():
 		InGameMenuController.open_menu(win_scene, get_viewport())
 	else:
