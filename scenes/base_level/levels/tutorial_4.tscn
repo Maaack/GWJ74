@@ -127,9 +127,9 @@ offset_top = -287.0
 offset_right = 212.0
 offset_bottom = -232.0
 theme_type_variation = &"HintLabel"
-text = "These are all OR gates,
-though many are haunted."
+text = "These are all OR gates."
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="." index="21"]
 offset_left = 72.0
@@ -141,20 +141,38 @@ text = "OR gates should output 1,
 when EITHER inputs are 1."
 horizontal_alignment = 1
 
-[node name="OrLogicGate" parent="." index="22" instance=ExtResource("7_ak14v")]
+[node name="Label5" type="Label" parent="." index="22"]
+offset_left = 1.0
+offset_top = -223.0
+offset_right = 277.0
+offset_bottom = -148.0
+rotation = -0.782075
+theme_type_variation = &"ScareLabel"
+text = "totallly fine"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="." index="23"]
+offset_left = -46.0
+offset_top = -261.0
+offset_right = 230.0
+offset_bottom = -186.0
+theme_type_variation = &"ScareLabel"
+text = "^"
+horizontal_alignment = 1
+
+[node name="OrLogicGate" parent="." index="24" instance=ExtResource("7_ak14v")]
 position = Vector2(0, -170)
 haunted_inputs = Array[int]([3])
 
-[node name="OrLogicGate2" parent="." index="23" instance=ExtResource("7_ak14v")]
+[node name="OrLogicGate2" parent="." index="25" instance=ExtResource("7_ak14v")]
 haunted_inputs = Array[int]([2, 3])
 
-[node name="OrLogicGate3" parent="." index="24" instance=ExtResource("7_ak14v")]
+[node name="OrLogicGate3" parent="." index="26" instance=ExtResource("7_ak14v")]
 position = Vector2(0, 170)
 haunted_inputs = Array[int]([1])
 
-[node name="OrLogicGate4" parent="." index="25" instance=ExtResource("7_ak14v")]
+[node name="OrLogicGate4" parent="." index="27" instance=ExtResource("7_ak14v")]
 position = Vector2(150, -170)
 
-[node name="OrLogicGate5" parent="." index="26" instance=ExtResource("7_ak14v")]
+[node name="OrLogicGate5" parent="." index="28" instance=ExtResource("7_ak14v")]
 position = Vector2(150, 170)
-haunted_inputs = Array[int]([2])
