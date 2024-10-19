@@ -109,56 +109,51 @@ output_wire = NodePath("../Wire4")
 [node name="LED2" parent="." index="17" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("8_8skaf")]
 position = Vector2(-171, 22)
 input_wire = NodePath("../Wire2")
-output_wire = NodePath("../Wire5")
-
-[node name="LED4" parent="." index="18" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("8_8skaf")]
-position = Vector2(-171, 22)
-input_wire = NodePath("../Wire2")
 output_wire = NodePath("../Wire8")
 
-[node name="LED3" parent="." index="19" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("8_8skaf")]
+[node name="LED3" parent="." index="18" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("8_8skaf")]
 position = Vector2(354, -115)
 input_wire = NodePath("../Wire9")
 output_wire = NodePath("../Wire10")
 
-[node name="Socket2I1O" parent="." index="20" node_paths=PackedStringArray("input_2_wire", "input_1_wire", "output_1_wire", "inserted_gate") instance=ExtResource("4_gg0tt")]
+[node name="Socket2I1O" parent="." index="19" node_paths=PackedStringArray("input_2_wire", "input_1_wire", "output_1_wire", "inserted_gate") instance=ExtResource("4_gg0tt")]
 position = Vector2(0, -152)
 input_2_wire = NodePath("../Wire5")
 input_1_wire = NodePath("../Wire4")
 output_1_wire = NodePath("../Wire3")
 inserted_gate = NodePath("../AndLogicGate2")
 
-[node name="Socket2I1O2" parent="." index="21" node_paths=PackedStringArray("input_2_wire", "input_1_wire", "output_1_wire", "inserted_gate") instance=ExtResource("4_gg0tt")]
+[node name="Socket2I1O2" parent="." index="20" node_paths=PackedStringArray("input_2_wire", "input_1_wire", "output_1_wire", "inserted_gate") instance=ExtResource("4_gg0tt")]
 position = Vector2(-1, -7)
 input_2_wire = NodePath("../Wire8")
 input_1_wire = NodePath("../Wire6")
 output_1_wire = NodePath("../Wire7")
 inserted_gate = NodePath("../AndLogicGate3")
 
-[node name="Socket2I1O3" parent="." index="22" node_paths=PackedStringArray("input_2_wire", "input_1_wire", "output_1_wire", "inserted_gate") instance=ExtResource("4_gg0tt")]
+[node name="Socket2I1O3" parent="." index="21" node_paths=PackedStringArray("input_2_wire", "input_1_wire", "output_1_wire", "inserted_gate") instance=ExtResource("4_gg0tt")]
 position = Vector2(202, -78)
 input_2_wire = NodePath("../Wire7")
 input_1_wire = NodePath("../Wire3")
 output_1_wire = NodePath("../Wire9")
 inserted_gate = NodePath("../NXOrLogicGate")
 
-[node name="Socket" parent="." index="23" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("6_6usuk")]
+[node name="Socket" parent="." index="22" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("6_6usuk")]
 position = Vector2(-397, -232)
 inserted_gate = NodePath("../AndLogicGate")
 
-[node name="Socket2" parent="." index="24" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("6_6usuk")]
+[node name="Socket2" parent="." index="23" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("6_6usuk")]
 position = Vector2(-397, -121)
 inserted_gate = NodePath("../AndLogicGate4")
 
-[node name="Socket3" parent="." index="25" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("6_6usuk")]
+[node name="Socket3" parent="." index="24" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("6_6usuk")]
 position = Vector2(-397, -6)
 inserted_gate = NodePath("../AndLogicGate5")
 
-[node name="Socket4" parent="." index="26" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("6_6usuk")]
+[node name="Socket4" parent="." index="25" node_paths=PackedStringArray("inserted_gate") instance=ExtResource("6_6usuk")]
 position = Vector2(-397, 111)
 inserted_gate = NodePath("../AndLogicGate6")
 
-[node name="Label2" type="Label" parent="." index="28"]
+[node name="Label2" type="Label" parent="." index="27"]
 offset_left = -9.0
 offset_top = -320.0
 offset_right = 383.0
@@ -168,7 +163,7 @@ text = "Matching Gate Detector
 Model XX.XX.XX"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="." index="29"]
+[node name="Label3" type="Label" parent="." index="28"]
 offset_left = 40.0
 offset_top = -309.0
 offset_right = 432.0
@@ -177,7 +172,7 @@ theme_type_variation = &"ScareLabel"
 text = "Haunted"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="." index="30"]
+[node name="Label4" type="Label" parent="." index="29"]
 offset_left = -1214.0
 offset_top = -35.0
 offset_right = -822.0
@@ -186,27 +181,27 @@ theme_type_variation = &"ScareLabel"
 text = "Don't look behind you."
 horizontal_alignment = 1
 
-[node name="AndLogicGate" parent="." index="31" instance=ExtResource("3_wi211")]
+[node name="AndLogicGate" parent="." index="30" instance=ExtResource("3_wi211")]
 position = Vector2(-397, -232)
 
-[node name="AndLogicGate2" parent="." index="32" instance=ExtResource("3_wi211")]
+[node name="AndLogicGate2" parent="." index="31" instance=ExtResource("3_wi211")]
 position = Vector2(0, -152)
 haunted_inputs = Array[int]([2])
 
-[node name="AndLogicGate3" parent="." index="33" instance=ExtResource("3_wi211")]
+[node name="AndLogicGate3" parent="." index="32" instance=ExtResource("3_wi211")]
 position = Vector2(-1, -7)
 haunted_inputs = Array[int]([1])
 
-[node name="AndLogicGate4" parent="." index="34" instance=ExtResource("3_wi211")]
+[node name="AndLogicGate4" parent="." index="33" instance=ExtResource("3_wi211")]
 position = Vector2(-397, -121)
 haunted_inputs = Array[int]([1])
 
-[node name="AndLogicGate5" parent="." index="35" instance=ExtResource("3_wi211")]
+[node name="AndLogicGate5" parent="." index="34" instance=ExtResource("3_wi211")]
 position = Vector2(-397, -6)
 haunted_inputs = Array[int]([0])
 
-[node name="AndLogicGate6" parent="." index="36" instance=ExtResource("3_wi211")]
+[node name="AndLogicGate6" parent="." index="35" instance=ExtResource("3_wi211")]
 position = Vector2(-397, 111)
 
-[node name="NXOrLogicGate" parent="." index="37" instance=ExtResource("9_qg7u4")]
+[node name="NXOrLogicGate" parent="." index="36" instance=ExtResource("9_qg7u4")]
 position = Vector2(202, -78)
