@@ -1,5 +1,5 @@
-class_name HauntableGate1I1O
-extends Gate1I1O
+class_name HauntableGate
+extends LogicGate
 
 @export var haunted_inputs : Array[int]
 @export var haunting_pattern : Array[bool]

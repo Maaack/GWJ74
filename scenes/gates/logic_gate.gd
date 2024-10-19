@@ -21,6 +21,9 @@ var _last_clear_global_position : Vector2
 var _nearest_socket : Socket2D
 var connected_socket : Socket2D
 
+func bit_not(bit : int):
+	return 0 if bit != 0 else 1
+
 func _on_area_2d_mouse_entered():
 	hovering = true
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
@@ -110,3 +113,6 @@ func _on_area_2d_area_exited(area):
 		_nearby_sockets.erase(area)
 	if area.get_parent() is LogicGate and area.get_parent() in _colliding_gates:
 		_colliding_gates.erase(area.get_parent())
+
+func _get_inputs_value():
+	return 0
