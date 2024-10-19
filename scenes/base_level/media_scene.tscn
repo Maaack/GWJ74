@@ -1,0 +1,141 @@
+[gd_scene load_steps=11 format=3 uid="uid://lfa3oelthogg"]
+
+[ext_resource type="PackedScene" uid="uid://bjlxayc5mxtjo" path="res://scenes/base_level/base_level.tscn" id="1_rvnmq"]
+[ext_resource type="PackedScene" uid="uid://cvriurvuudiom" path="res://scenes/wires/wire.tscn" id="2_l4d1f"]
+[ext_resource type="Script" path="res://scenes/base_level/media_scene.gd" id="2_rj266"]
+[ext_resource type="PackedScene" uid="uid://ban2om1gkd7fn" path="res://scenes/sockets/socket_1i_1o.tscn" id="3_f63pj"]
+[ext_resource type="PackedScene" uid="uid://c5dquppa40dh4" path="res://scenes/sockets/socket.tscn" id="4_tyi0i"]
+[ext_resource type="PackedScene" uid="uid://bb16q1exnh000" path="res://scenes/io_ports/io_port.tscn" id="5_oxvlq"]
+[ext_resource type="PackedScene" uid="uid://ct84uikyra0ks" path="res://scenes/electronics/led.tscn" id="6_dvmhw"]
+[ext_resource type="PackedScene" uid="uid://cjl1m3sfbu25q" path="res://scenes/gates/not_logic_gate.tscn" id="7_h3tr3"]
+[ext_resource type="FontFile" uid="uid://idyk6slk84fp" path="res://assets/fonts/HomeVideo-Regular.otf" id="8_mwd5u"]
+[ext_resource type="Script" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/config_name_label.gd" id="9_o0mqy"]
+
+[node name="MediaScene" node_paths=PackedStringArray("input_ports", "output_ports") instance=ExtResource("1_rvnmq")]
+script = ExtResource("2_rj266")
+input_ports = [NodePath("Input1IOPort")]
+output_ports = [NodePath("Output1IOPort")]
+expected_outputs = Array[int]([1, 1])
+cycle_input_time = 0.5
+metadata/_edit_horizontal_guides_ = [-199.0, -112.0]
+metadata/_edit_vertical_guides_ = [770.0]
+
+[node name="LevelCamera" parent="." index="0"]
+camera_area = Vector2(1500, 400)
+
+[node name="Wire" parent="." index="1" instance=ExtResource("2_l4d1f")]
+position = Vector2(638, 184)
+points = PackedVector2Array(-638, -184, -570, -184)
+start_position = Vector2(-638, -184)
+end_position = Vector2(-570, -184)
+
+[node name="Wire4" parent="." index="2" instance=ExtResource("2_l4d1f")]
+position = Vector2(638, 169)
+points = PackedVector2Array(-550, -169, 36, -169)
+start_position = Vector2(-550, -169)
+end_position = Vector2(36, -169)
+
+[node name="Wire3" parent="." index="3" instance=ExtResource("2_l4d1f")]
+position = Vector2(897, 0)
+points = PackedVector2Array(-59, 0, -1, 0)
+start_position = Vector2(-59, 0)
+end_position = Vector2(-1, 0)
+
+[node name="Wire6" parent="." index="4" instance=ExtResource("2_l4d1f")]
+position = Vector2(873, 0)
+points = PackedVector2Array(43, 0, 133, 0)
+start_position = Vector2(43, 0)
+end_position = Vector2(133, 0)
+
+[node name="UpdateTimer" parent="." index="5"]
+wait_time = 0.5
+
+[node name="Socket1I1O" parent="." index="6" node_paths=PackedStringArray("input_1_wire", "output_1_wire") instance=ExtResource("3_f63pj")]
+position = Vector2(756, 0)
+input_1_wire = NodePath("../Wire4")
+output_1_wire = NodePath("../Wire3")
+
+[node name="Socket" parent="." index="7" instance=ExtResource("4_tyi0i")]
+position = Vector2(756, -154)
+
+[node name="Input1IOPort" parent="." index="8" node_paths=PackedStringArray("wires") instance=ExtResource("5_oxvlq")]
+wires = [NodePath("../Wire")]
+port_name = "Input 1"
+
+[node name="Output1IOPort" parent="." index="9" node_paths=PackedStringArray("wires") instance=ExtResource("5_oxvlq")]
+position = Vector2(1006, 0)
+wires = [NodePath("../Wire6")]
+is_output = true
+port_name = "Output 1"
+
+[node name="LED" parent="." index="10" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("6_dvmhw")]
+position = Vector2(78, -37)
+input_wire = NodePath("../Wire")
+output_wire = NodePath("../Wire4")
+
+[node name="LED3" parent="." index="11" node_paths=PackedStringArray("input_wire", "output_wire") instance=ExtResource("6_dvmhw")]
+position = Vector2(906, -37)
+input_wire = NodePath("../Wire3")
+output_wire = NodePath("../Wire6")
+
+[node name="Label4" type="Label" parent="." index="12"]
+offset_left = -1163.0
+offset_top = -80.0
+offset_right = -887.0
+offset_bottom = -31.0
+theme_type_variation = &"ScareLabel"
+text = "There's nothing here to worry about.
+Check back to the right -->"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." index="13"]
+offset_left = 824.0
+offset_top = -164.0
+offset_right = 1174.0
+offset_bottom = -115.0
+theme_type_variation = &"HintLabel"
+text = "<-- Drag the gate from the socket
+to the socket below."
+horizontal_alignment = 1
+
+[node name="NotLogicGate" parent="." index="14" instance=ExtResource("7_h3tr3")]
+position = Vector2(756, -154)
+
+[node name="TitleLabel" type="Label" parent="." index="16"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.5
+offset_top = -181.5
+offset_right = 230.5
+offset_bottom = -90.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_mwd5u")
+theme_override_font_sizes/font_size = 48
+text = "Haunted 
+Circuits"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_o0mqy")
+
+[node name="TitleLabel2" type="Label" parent="." index="17"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -461.0
+offset_top = 210.5
+offset_right = 461.0
+offset_bottom = 301.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_mwd5u")
+theme_override_font_sizes/font_size = 96
+text = "Haunted Circuits"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_o0mqy")
