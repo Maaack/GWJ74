@@ -1,4 +1,5 @@
 @tool
+class_name LED
 extends Node2D
 
 @export var input_wire : Wire :
@@ -12,6 +13,12 @@ extends Node2D
 	set(value):
 		output_wire = value
 		_update_wire_output_position()
+
+@export var led_color : Color = Color.WHITE :
+	set(value):
+		led_color = value
+		if %BulbSprite2D2.is_inside_tree():
+			%BulbSprite2D2.modulate = led_color
 
 func get_input_global_position() -> Vector2:
 	return %InputMarker2D.global_position
@@ -33,5 +40,5 @@ func _try_to_connect_signal_to_node(node : Node, signal_name : StringName, calla
 
 func update():
 	if not (input_wire and output_wire): return
-	%BulbSprite2D2.visible = round(input_wire.charge) == 0
+	%DarkBulbSprite2D.visible = round(input_wire.charge) == 0
 	output_wire.charge = input_wire.charge

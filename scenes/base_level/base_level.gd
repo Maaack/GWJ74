@@ -20,6 +20,7 @@ signal progress_updated(progress: float)
 
 @export_group("Style")
 @export var wire_colors : Array[Color]
+@export var led_colors : Array[Color]
 
 var input_range : int = 0
 var _consecutive_matches : int = 0
@@ -119,9 +120,21 @@ func _color_wires():
 			node.modulate = _random_colors[_color_iter]
 			_color_iter += 1
 
+func _color_leds():
+	var _color_iter = 0
+	var _random_colors = led_colors.duplicate()
+	_random_colors.shuffle()
+	for node in get_children():
+		if node is LED:
+			if _color_iter >= _random_colors.size():
+				_color_iter = 0
+			node.led_color = _random_colors[_color_iter]
+			_color_iter += 1
+
 func _ready():
 	_connect_sockets()
 	_color_wires()
+	_color_leds()
 
 func _on_socket_gate_inserted(_gate):
 	$LevelCamera.shake()
