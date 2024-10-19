@@ -14,7 +14,7 @@
 input_ports = [NodePath("Input1IOPort"), NodePath("Input2IOPort")]
 output_ports = [NodePath("Output1IOPort")]
 expected_outputs = Array[int]([1, 1, 1, 1])
-matches_required = 32
+matches_required = 20
 metadata/_edit_horizontal_guides_ = [-78.0]
 metadata/_edit_vertical_guides_ = [364.0]
 
