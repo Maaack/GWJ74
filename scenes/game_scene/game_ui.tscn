@@ -35,7 +35,6 @@ pause_menu_packed = ExtResource("5_v7g7r")
 script = ExtResource("6_5id7q")
 level_container = NodePath("../UIContainer/HBoxContainer/ViewportContainer/ConfigurableSubViewport")
 files = Array[String](["res://scenes/base_level/levels/game_intro.tscn", "res://scenes/base_level/levels/tutorial_1.tscn", "res://scenes/base_level/levels/tutorial_2.tscn", "res://scenes/base_level/levels/tutorial_3.tscn", "res://scenes/base_level/levels/tutorial_4.tscn", "res://scenes/base_level/levels/tutorial_5.tscn", "res://scenes/base_level/levels/level_1.tscn", "res://scenes/base_level/levels/level_2.tscn"])
-directory = "res://scenes/base_level/levels"
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("7_8u31h")]
 
