@@ -41,8 +41,8 @@ end_position = Vector2(-49, 0)
 
 [node name="Wire5" parent="." index="5" instance=ExtResource("5_3oo85")]
 position = Vector2(-132, -49)
-points = PackedVector2Array(-29, 108, 50, -88)
-start_position = Vector2(-29, 108)
+points = PackedVector2Array(-132, 108, 50, -88)
+start_position = Vector2(-132, 108)
 end_position = Vector2(50, -88)
 
 [node name="Wire3" parent="." index="6" instance=ExtResource("5_3oo85")]
@@ -53,8 +53,8 @@ end_position = Vector2(-7, -93)
 
 [node name="Wire6" parent="." index="7" instance=ExtResource("5_3oo85")]
 position = Vector2(127, 0)
-points = PackedVector2Array(-391, -198, -210, -22)
-start_position = Vector2(-391, -198)
+points = PackedVector2Array(-391, -222, -210, -22)
+start_position = Vector2(-391, -222)
 end_position = Vector2(-210, -22)
 
 [node name="Wire7" parent="." index="8" instance=ExtResource("5_3oo85")]
