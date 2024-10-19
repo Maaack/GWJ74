@@ -9,6 +9,7 @@
 texture_filter = 1
 script = ExtResource("1_7im4o")
 cycle_input_time = 1.0
+wire_colors = Array[Color]([Color(0.154, 0.728933, 0.77, 1), Color(0, 0.337255, 0.72549, 1), Color(0.154, 0.77, 0.1848, 1), Color(1, 0.847059, 0, 1), Color(0.77, 0.513333, 0.154, 1), Color(0.768314, 0.189863, 0.157231, 1), Color(0.5852, 0.154, 0.77, 1)])
 
 [node name="LevelCamera" parent="." instance=ExtResource("2_jyndy")]
 

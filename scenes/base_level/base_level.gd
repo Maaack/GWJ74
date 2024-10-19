@@ -18,6 +18,9 @@ signal progress_updated(progress: float)
 @export var cycle_input_time : float = 0.5
 @export var matches_required : int
 
+@export_group("Style")
+@export var wire_colors : Array[Color]
+
 var input_range : int = 0
 var _consecutive_matches : int = 0
 var input_iter : int = -1
@@ -104,5 +107,17 @@ func update_test_speed(modifier : float = 1.0):
 	cycle_input_modifier = modifier
 	$UpdateTimer.wait_time = cycle_input_time / cycle_input_modifier
 
+func _color_wires():
+	var _color_iter = 0
+	var _random_colors = wire_colors.duplicate()
+	_random_colors.shuffle()
+	for node in get_children():
+		if node is Wire:
+			if _color_iter >= _random_colors.size():
+				_color_iter = 0
+			node.modulate = _random_colors[_color_iter]
+			_color_iter += 1
+
 func _ready():
 	_connect_sockets()
+	_color_wires()
