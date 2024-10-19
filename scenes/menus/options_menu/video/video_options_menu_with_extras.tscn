@@ -1,15 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://lxwk6rm0uphd"]
 
-[ext_resource type="PackedScene" path="res://scenes/menus/options_menu/video/video_options_menu.tscn" id="1_qd3hn"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/option_control/list_option_control.tscn" id="2_1hwbr"]
+[ext_resource type="PackedScene" uid="uid://xj5c6br2vokl" path="res://scenes/menus/options_menu/video/video_options_menu.tscn" id="1_qd3hn"]
+[ext_resource type="PackedScene" uid="uid://b6bl3n5mp3m1e" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/option_control/list_option_control.tscn" id="2_1hwbr"]
 
 [node name="Video" instance=ExtResource("1_qd3hn")]
 
+[node name="ResolutionControl" parent="VBoxContainer" index="1"]
+option_values = [Vector2i(1280, 720), Vector2i(1600, 900), Vector2i(1920, 1080), Vector2i(2048, 1152), Vector2i(2560, 1440), Vector2i(3200, 1800), Vector2i(3840, 2160)]
+option_titles = Array[String](["1280 x 720", "1600 x 900", "1920 x 1080", "2048 x 1152", "2560 x 1440", "3200 x 1800", "3840 x 2160"])
+
 [node name="AntiAliasingControl" parent="VBoxContainer" index="2" instance=ExtResource("2_1hwbr")]
 layout_mode = 2
+lock_titles = true
 option_values = [0, 1, 2, 3]
 option_titles = Array[String](["Disabled (Fastest)", "2x", "4x", "8x (Slowest)"])
-lock_titles = true
 option_name = "Anti-Aliasing"
 option_section = 3
 key = "Anti-aliasing"
@@ -19,9 +23,9 @@ default_value = 0
 
 [node name="CameraShakeControl" parent="VBoxContainer" index="3" instance=ExtResource("2_1hwbr")]
 layout_mode = 2
+lock_titles = true
 option_values = [1.0, 0.75, 0.5, 0.0]
 option_titles = Array[String](["Normal", "Reduced", "Minimal", "None"])
-lock_titles = true
 option_name = "Camera Shake"
 option_section = 3
 key = "CameraShake"
