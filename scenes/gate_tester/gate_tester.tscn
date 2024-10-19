@@ -6,7 +6,10 @@
 [node name="GateTester" type="Node2D"]
 script = ExtResource("1_0tvmm")
 test_delay = 0.3
+reads_gate_type = true
 repeat_delay = 1.0
+good_color = Color(0.34286, 0.832624, 0.377256, 1)
+bad_color = Color(0.92456, 0.317686, 0.316626, 1)
 metadata/_edit_horizontal_guides_ = [-15.0, 15.0, 0.0, 59.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]

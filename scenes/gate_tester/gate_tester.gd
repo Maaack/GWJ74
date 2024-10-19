@@ -10,6 +10,9 @@ extends Node2D
 		show_repeat_button = value
 		%RepeatButton.visible = show_repeat_button
 
+@export var good_color : Color = Color.WHITE
+@export var bad_color : Color = Color.WHITE
+
 @onready var gate_type_label : Label = %GateTypeLabel
 @onready var output_00_label : Label = %Output00Label
 @onready var output_01_label : Label = %Output01Label
@@ -69,7 +72,13 @@ func test_gate_suite():
 			var test_input_2 : int = int((test & 2) > 0)
 			var _result : int = test_gate(test_input_1, test_input_2, gate)
 			iter += 1
+			_output_label.modulate = Color.WHITE
 			_output_label.text = "%d" % int(_result)
+			if reads_gate_type and gate is HauntableGate:
+				if gate._get_raw_output() != _result:
+					_output_label.modulate = bad_color
+				else:
+					_output_label.modulate = good_color
 		if not repeat_mode: break
 		await get_tree().create_timer(repeat_delay, false).timeout
 
